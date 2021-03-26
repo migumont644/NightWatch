@@ -50,7 +50,10 @@
             this.rightDoorButton = new System.Windows.Forms.Button();
             this.backDoorButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.detectedLabel = new System.Windows.Forms.Label();
+            this.detectedFreddyLabel = new System.Windows.Forms.Label();
+            this.detectedBonnieLabel = new System.Windows.Forms.Label();
+            this.detectedChicaLabel = new System.Windows.Forms.Label();
+            this.detectedFoxyLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -224,7 +227,7 @@
             // 
             // backDoorButton
             // 
-            this.backDoorButton.Location = new System.Drawing.Point(565, 464);
+            this.backDoorButton.Location = new System.Drawing.Point(561, 464);
             this.backDoorButton.Name = "backDoorButton";
             this.backDoorButton.Size = new System.Drawing.Size(108, 39);
             this.backDoorButton.TabIndex = 17;
@@ -241,14 +244,42 @@
             this.label2.TabIndex = 18;
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // detectedLabel
+            // detectedFreddyLabel
             // 
-            this.detectedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedLabel.Location = new System.Drawing.Point(271, 477);
-            this.detectedLabel.Name = "detectedLabel";
-            this.detectedLabel.Size = new System.Drawing.Size(100, 63);
-            this.detectedLabel.TabIndex = 19;
-            this.detectedLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.detectedFreddyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detectedFreddyLabel.Location = new System.Drawing.Point(269, 475);
+            this.detectedFreddyLabel.Name = "detectedFreddyLabel";
+            this.detectedFreddyLabel.Size = new System.Drawing.Size(121, 18);
+            this.detectedFreddyLabel.TabIndex = 19;
+            this.detectedFreddyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // detectedBonnieLabel
+            // 
+            this.detectedBonnieLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detectedBonnieLabel.Location = new System.Drawing.Point(269, 493);
+            this.detectedBonnieLabel.Name = "detectedBonnieLabel";
+            this.detectedBonnieLabel.Size = new System.Drawing.Size(121, 18);
+            this.detectedBonnieLabel.TabIndex = 20;
+            this.detectedBonnieLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.detectedBonnieLabel.Click += new System.EventHandler(this.Label3_Click);
+            // 
+            // detectedChicaLabel
+            // 
+            this.detectedChicaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detectedChicaLabel.Location = new System.Drawing.Point(269, 511);
+            this.detectedChicaLabel.Name = "detectedChicaLabel";
+            this.detectedChicaLabel.Size = new System.Drawing.Size(121, 18);
+            this.detectedChicaLabel.TabIndex = 21;
+            this.detectedChicaLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // detectedFoxyLabel
+            // 
+            this.detectedFoxyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detectedFoxyLabel.Location = new System.Drawing.Point(269, 529);
+            this.detectedFoxyLabel.Name = "detectedFoxyLabel";
+            this.detectedFoxyLabel.Size = new System.Drawing.Size(121, 18);
+            this.detectedFoxyLabel.TabIndex = 22;
+            this.detectedFoxyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // nightWatchTitle
             // 
@@ -256,7 +287,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.detectedLabel);
+            this.Controls.Add(this.detectedFoxyLabel);
+            this.Controls.Add(this.detectedChicaLabel);
+            this.Controls.Add(this.detectedBonnieLabel);
+            this.Controls.Add(this.detectedFreddyLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.backDoorButton);
             this.Controls.Add(this.rightDoorButton);
@@ -309,7 +343,10 @@
         private System.Windows.Forms.Button rightDoorButton;
         private System.Windows.Forms.Button backDoorButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label detectedLabel;
+        private System.Windows.Forms.Label detectedFreddyLabel;
+        private System.Windows.Forms.Label detectedBonnieLabel;
+        private System.Windows.Forms.Label detectedChicaLabel;
+        private System.Windows.Forms.Label detectedFoxyLabel;
     }
 }
 
