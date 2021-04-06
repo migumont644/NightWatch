@@ -41,10 +41,7 @@
             this.errorTwoButton = new System.Windows.Forms.Button();
             this.errorOneButton = new System.Windows.Forms.Button();
             this.cleanButton = new System.Windows.Forms.Button();
-            this.loadingClean = new System.Windows.Forms.Label();
             this.printerButton = new System.Windows.Forms.Button();
-            this.loadingPrinter = new System.Windows.Forms.Label();
-            this.loadingPowerBox = new System.Windows.Forms.Label();
             this.powerBoxButton = new System.Windows.Forms.Button();
             this.leftDoorButton = new System.Windows.Forms.Button();
             this.rightDoorButton = new System.Windows.Forms.Button();
@@ -54,6 +51,9 @@
             this.detectedBonnieLabel = new System.Windows.Forms.Label();
             this.detectedChicaLabel = new System.Windows.Forms.Label();
             this.detectedFoxyLabel = new System.Windows.Forms.Label();
+            this.cleanTimer = new System.Windows.Forms.Timer(this.components);
+            this.printerTimer = new System.Windows.Forms.Timer(this.components);
+            this.powerBoxTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // gameTimer
@@ -162,14 +162,8 @@
             this.cleanButton.TabIndex = 9;
             this.cleanButton.Text = "CLEAN";
             this.cleanButton.UseVisualStyleBackColor = true;
-            // 
-            // loadingClean
-            // 
-            this.loadingClean.BackColor = System.Drawing.Color.White;
-            this.loadingClean.Location = new System.Drawing.Point(440, 72);
-            this.loadingClean.Name = "loadingClean";
-            this.loadingClean.Size = new System.Drawing.Size(214, 23);
-            this.loadingClean.TabIndex = 10;
+            this.cleanButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CleanButton_MouseDown);
+            this.cleanButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CleanButton_MouseUp);
             // 
             // printerButton
             // 
@@ -179,22 +173,8 @@
             this.printerButton.TabIndex = 11;
             this.printerButton.Text = "PRINTER";
             this.printerButton.UseVisualStyleBackColor = true;
-            // 
-            // loadingPrinter
-            // 
-            this.loadingPrinter.BackColor = System.Drawing.Color.White;
-            this.loadingPrinter.Location = new System.Drawing.Point(440, 163);
-            this.loadingPrinter.Name = "loadingPrinter";
-            this.loadingPrinter.Size = new System.Drawing.Size(214, 23);
-            this.loadingPrinter.TabIndex = 12;
-            // 
-            // loadingPowerBox
-            // 
-            this.loadingPowerBox.BackColor = System.Drawing.Color.White;
-            this.loadingPowerBox.Location = new System.Drawing.Point(440, 273);
-            this.loadingPowerBox.Name = "loadingPowerBox";
-            this.loadingPowerBox.Size = new System.Drawing.Size(214, 23);
-            this.loadingPowerBox.TabIndex = 13;
+            this.printerButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PrinterButton_MouseDown);
+            this.printerButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PrinterButton_MouseUp);
             // 
             // powerBoxButton
             // 
@@ -204,6 +184,8 @@
             this.powerBoxButton.TabIndex = 14;
             this.powerBoxButton.Text = "FIX POWER BOX";
             this.powerBoxButton.UseVisualStyleBackColor = true;
+            this.powerBoxButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PowerBoxButton_MouseDown);
+            this.powerBoxButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PowerBoxButton_MouseUp);
             // 
             // leftDoorButton
             // 
@@ -247,26 +229,25 @@
             // detectedFreddyLabel
             // 
             this.detectedFreddyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedFreddyLabel.Location = new System.Drawing.Point(269, 475);
+            this.detectedFreddyLabel.Location = new System.Drawing.Point(269, 477);
             this.detectedFreddyLabel.Name = "detectedFreddyLabel";
-            this.detectedFreddyLabel.Size = new System.Drawing.Size(121, 18);
+            this.detectedFreddyLabel.Size = new System.Drawing.Size(121, 21);
             this.detectedFreddyLabel.TabIndex = 19;
             this.detectedFreddyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // detectedBonnieLabel
             // 
             this.detectedBonnieLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedBonnieLabel.Location = new System.Drawing.Point(269, 493);
+            this.detectedBonnieLabel.Location = new System.Drawing.Point(269, 498);
             this.detectedBonnieLabel.Name = "detectedBonnieLabel";
             this.detectedBonnieLabel.Size = new System.Drawing.Size(121, 18);
             this.detectedBonnieLabel.TabIndex = 20;
             this.detectedBonnieLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.detectedBonnieLabel.Click += new System.EventHandler(this.Label3_Click);
             // 
             // detectedChicaLabel
             // 
             this.detectedChicaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedChicaLabel.Location = new System.Drawing.Point(269, 511);
+            this.detectedChicaLabel.Location = new System.Drawing.Point(269, 516);
             this.detectedChicaLabel.Name = "detectedChicaLabel";
             this.detectedChicaLabel.Size = new System.Drawing.Size(121, 18);
             this.detectedChicaLabel.TabIndex = 21;
@@ -275,11 +256,26 @@
             // detectedFoxyLabel
             // 
             this.detectedFoxyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedFoxyLabel.Location = new System.Drawing.Point(269, 529);
+            this.detectedFoxyLabel.Location = new System.Drawing.Point(269, 534);
             this.detectedFoxyLabel.Name = "detectedFoxyLabel";
             this.detectedFoxyLabel.Size = new System.Drawing.Size(121, 18);
             this.detectedFoxyLabel.TabIndex = 22;
             this.detectedFoxyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // cleanTimer
+            // 
+            this.cleanTimer.Interval = 20;
+            this.cleanTimer.Tick += new System.EventHandler(this.CleanTimer_Tick);
+            // 
+            // printerTimer
+            // 
+            this.printerTimer.Interval = 20;
+            this.printerTimer.Tick += new System.EventHandler(this.PrinterTimer_Tick);
+            // 
+            // powerBoxTimer
+            // 
+            this.powerBoxTimer.Interval = 20;
+            this.powerBoxTimer.Tick += new System.EventHandler(this.PowerBoxTimer_Tick);
             // 
             // nightWatchTitle
             // 
@@ -296,10 +292,7 @@
             this.Controls.Add(this.rightDoorButton);
             this.Controls.Add(this.leftDoorButton);
             this.Controls.Add(this.powerBoxButton);
-            this.Controls.Add(this.loadingPowerBox);
-            this.Controls.Add(this.loadingPrinter);
             this.Controls.Add(this.printerButton);
-            this.Controls.Add(this.loadingClean);
             this.Controls.Add(this.cleanButton);
             this.Controls.Add(this.errorOneButton);
             this.Controls.Add(this.errorTwoButton);
@@ -334,10 +327,7 @@
         private System.Windows.Forms.Button errorTwoButton;
         private System.Windows.Forms.Button errorOneButton;
         private System.Windows.Forms.Button cleanButton;
-        private System.Windows.Forms.Label loadingClean;
         private System.Windows.Forms.Button printerButton;
-        private System.Windows.Forms.Label loadingPrinter;
-        private System.Windows.Forms.Label loadingPowerBox;
         private System.Windows.Forms.Button powerBoxButton;
         private System.Windows.Forms.Button leftDoorButton;
         private System.Windows.Forms.Button rightDoorButton;
@@ -347,6 +337,9 @@
         private System.Windows.Forms.Label detectedBonnieLabel;
         private System.Windows.Forms.Label detectedChicaLabel;
         private System.Windows.Forms.Label detectedFoxyLabel;
+        private System.Windows.Forms.Timer cleanTimer;
+        private System.Windows.Forms.Timer printerTimer;
+        private System.Windows.Forms.Timer powerBoxTimer;
     }
 }
 
