@@ -86,5 +86,32 @@
   <ItemGroup>
     <None Include="Resources\Loud_Bang-Osama_Bin_Laden-925764326.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jail_cell_door.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\electric_door_opening_2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera-shutter-click-01.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dot Matrix Printer-SoundBible.com-790333844.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Powering-Down-A1-www.fesliyanstudios.com.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Electricity-SoundBible.com-965518507.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kids Cheering-SoundBible.com-681813822.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Power Down-SoundBible.com-1404884198.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glass_ping-Go445-1207030150.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

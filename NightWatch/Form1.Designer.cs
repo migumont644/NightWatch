@@ -37,7 +37,7 @@
             this.cameraTwoButton = new System.Windows.Forms.Button();
             this.cameraSixButton = new System.Windows.Forms.Button();
             this.cameraFiveButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.youLabel = new System.Windows.Forms.Label();
             this.errorTwoButton = new System.Windows.Forms.Button();
             this.errorOneButton = new System.Windows.Forms.Button();
             this.cleanButton = new System.Windows.Forms.Button();
@@ -54,6 +54,10 @@
             this.cleanTimer = new System.Windows.Forms.Timer(this.components);
             this.printerTimer = new System.Windows.Forms.Timer(this.components);
             this.powerBoxTimer = new System.Windows.Forms.Timer(this.components);
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.gameOverBlood = new System.Windows.Forms.Timer(this.components);
+            this.gameOverLabel = new System.Windows.Forms.Label();
+            this.winLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -122,15 +126,15 @@
             this.cameraFiveButton.UseVisualStyleBackColor = true;
             this.cameraFiveButton.Click += new System.EventHandler(this.CameraFiveButton_Click);
             // 
-            // label1
+            // youLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(171, 335);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 24);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "YOU";
+            this.youLabel.AutoSize = true;
+            this.youLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.youLabel.Location = new System.Drawing.Point(171, 335);
+            this.youLabel.Name = "youLabel";
+            this.youLabel.Size = new System.Drawing.Size(53, 24);
+            this.youLabel.TabIndex = 6;
+            this.youLabel.Text = "YOU";
             // 
             // errorTwoButton
             // 
@@ -277,12 +281,52 @@
             this.powerBoxTimer.Interval = 20;
             this.powerBoxTimer.Tick += new System.EventHandler(this.PowerBoxTimer_Tick);
             // 
+            // timeLabel
+            // 
+            this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeLabel.Location = new System.Drawing.Point(616, 9);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(211, 23);
+            this.timeLabel.TabIndex = 23;
+            // 
+            // gameOverBlood
+            // 
+            this.gameOverBlood.Interval = 20;
+            this.gameOverBlood.Tick += new System.EventHandler(this.GameOverBlood_Tick);
+            // 
+            // gameOverLabel
+            // 
+            this.gameOverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameOverLabel.ForeColor = System.Drawing.Color.Red;
+            this.gameOverLabel.Location = new System.Drawing.Point(243, -1);
+            this.gameOverLabel.Name = "gameOverLabel";
+            this.gameOverLabel.Size = new System.Drawing.Size(282, 33);
+            this.gameOverLabel.TabIndex = 24;
+            this.gameOverLabel.Text = "GAME OVER";
+            this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gameOverLabel.Visible = false;
+            // 
+            // winLabel
+            // 
+            this.winLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.winLabel.ForeColor = System.Drawing.Color.LimeGreen;
+            this.winLabel.Location = new System.Drawing.Point(258, 216);
+            this.winLabel.Name = "winLabel";
+            this.winLabel.Size = new System.Drawing.Size(282, 33);
+            this.winLabel.TabIndex = 25;
+            this.winLabel.Text = "YOU SURVIVED ";
+            this.winLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.winLabel.Visible = false;
+            // 
             // nightWatchTitle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.winLabel);
+            this.Controls.Add(this.gameOverLabel);
+            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.detectedFoxyLabel);
             this.Controls.Add(this.detectedChicaLabel);
             this.Controls.Add(this.detectedBonnieLabel);
@@ -296,7 +340,7 @@
             this.Controls.Add(this.cleanButton);
             this.Controls.Add(this.errorOneButton);
             this.Controls.Add(this.errorTwoButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.youLabel);
             this.Controls.Add(this.cameraFiveButton);
             this.Controls.Add(this.cameraSixButton);
             this.Controls.Add(this.cameraTwoButton);
@@ -323,7 +367,7 @@
         private System.Windows.Forms.Button cameraTwoButton;
         private System.Windows.Forms.Button cameraSixButton;
         private System.Windows.Forms.Button cameraFiveButton;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label youLabel;
         private System.Windows.Forms.Button errorTwoButton;
         private System.Windows.Forms.Button errorOneButton;
         private System.Windows.Forms.Button cleanButton;
@@ -340,6 +384,10 @@
         private System.Windows.Forms.Timer cleanTimer;
         private System.Windows.Forms.Timer printerTimer;
         private System.Windows.Forms.Timer powerBoxTimer;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Timer gameOverBlood;
+        private System.Windows.Forms.Label gameOverLabel;
+        private System.Windows.Forms.Label winLabel;
     }
 }
 

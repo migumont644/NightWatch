@@ -25,23 +25,15 @@ namespace NightWatch
         List<int> bloodLineXList = new List<int>();
         List<int> bloodLineYList = new List<int>();
 
-        int freddyX = 0;
-        int freddyY = 0;
         int freddyPosition = 1;
         int freddyMovementTimer = 0;
 
-        int bonnieX = 0;
-        int bonnieY = 0;
         int bonniePosition = 1;
         int bonnieMovementTimer = 0;
 
-        int chicaX = 0;
-        int chicaY = 0;
         int chicaPosition = 1;
         int chicaMovementTimer = 0;
 
-        int foxyX = 0;
-        int foxyY = 0;
         int foxyPosition = 1;
         int foxyMovementTimer = 0;
 
@@ -51,7 +43,6 @@ namespace NightWatch
         int cameraFour = 4;
         int cameraFive = 5;
         int cameraSix = 6;
-        int office = 7;
         int error1 = 8;
         int error2 = 9;
 
@@ -188,6 +179,7 @@ namespace NightWatch
         int fixPowerBoxLoadingSquareY14 = -50;
 
         int death = 0;
+        int time = 27000;
 
         Random randGen = new Random();
 
@@ -210,8 +202,16 @@ namespace NightWatch
 
         SoundPlayer backSound = new SoundPlayer(Properties.Resources.loudBang);
         SoundPlayer hitDoorSound = new SoundPlayer(Properties.Resources.gavelBanging);
+        SoundPlayer doorCloseSound = new SoundPlayer(Properties.Resources.doorClose);
+        SoundPlayer doorOpenSound = new SoundPlayer(Properties.Resources.electricDoorOpening);
+        SoundPlayer cameraSound = new SoundPlayer(Properties.Resources.cameraShutterClick);
+        SoundPlayer printerSound = new SoundPlayer(Properties.Resources.printer);
+        SoundPlayer cleaningSound = new SoundPlayer(Properties.Resources.poweringVacuum);
+        SoundPlayer powerBoxSound = new SoundPlayer(Properties.Resources.electricity);
+        SoundPlayer cheerSound = new SoundPlayer(Properties.Resources.kidsCheering);
+        SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.gameOver);
+        SoundPlayer doneSound = new SoundPlayer(Properties.Resources.glassPing);
 
-        int test = 0;
         public nightWatchTitle()
         {
             InitializeComponent();
@@ -224,94 +224,102 @@ namespace NightWatch
             chicaMovementTimer = randGen.Next(15000, 30000);
             foxyMovementTimer = randGen.Next(10000, 15000);
             printerButton.Enabled = false;
-            powerBoxButton.Enabled = false;
+            powerBoxButton.Enabled = false;         
         }
-
+     
         private void NightWatchTitle_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.FillRectangle(whiteBrush, 400, 0, 15, 800);
-            e.Graphics.FillRectangle(blackBrush, 225, 300, 10, 100);
-            e.Graphics.FillRectangle(blackBrush, 155, 300, 10, 100);
-            e.Graphics.FillRectangle(blackBrush, 155, 400, 80, 10);
-            e.Graphics.FillRectangle(blackBrush, 155, 300, 80, 10);
-
-            e.Graphics.FillRectangle(brownBrush, freddyCubeX, freddyCubeY, 10, 10);
-            e.Graphics.FillRectangle(purpleBrush, bonnieCubeX, bonnieCubeY, 10, 10);
-            e.Graphics.FillRectangle(yellowBrush, chicaCubeX, chicaCubeY, 10, 10);
-            e.Graphics.FillRectangle(redBrush, foxyCubeX, foxyCubeY, 10, 10);
-
-            e.Graphics.FillRectangle(yellowBrush, doorLeftX, doorLeftY, 15, 60);
-            e.Graphics.FillRectangle(yellowBrush, doorRightX, doorRightY, 15, 60);
-            e.Graphics.FillRectangle(yellowBrush, doorBackX, doorBackY, 45, 15);
-
-            e.Graphics.FillRectangle(greenBrush, doorLeftGreenX, doorLeftGreenY, 20, 20);
-            e.Graphics.FillRectangle(yellowBrush, doorLeftYellowX, doorLeftYellowY, 20, 20);
-            e.Graphics.FillRectangle(redBrush, doorLeftRedX, doorLeftRedY, 20, 20);
-
-            e.Graphics.FillRectangle(greenBrush, doorRightGreenX, doorRightGreenY, 20, 20);
-            e.Graphics.FillRectangle(yellowBrush, doorRightYellowX, doorRightYellowY, 20, 20);
-            e.Graphics.FillRectangle(redBrush, doorRightRedX, doorRightRedY, 20, 20);
-
-            e.Graphics.FillRectangle(greenBrush, doorBackGreenX, doorBackGreenY, 20, 20);
-            e.Graphics.FillRectangle(yellowBrush, doorBackYellowX, doorBackYellowY, 20, 20);
-            e.Graphics.FillRectangle(redBrush, doorBackRedX, doorBackRedY, 20, 20);
-
-            e.Graphics.FillRectangle(whiteBrush, 440, 74, 260, 20);
-            e.Graphics.FillRectangle(whiteBrush, 440, 168, 260, 20);
-            e.Graphics.FillRectangle(whiteBrush, 440, 274, 260, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX1, cleanLoadingSquareY1, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX2, cleanLoadingSquareY2, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX3, cleanLoadingSquareY3, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX4, cleanLoadingSquareY4, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX5, cleanLoadingSquareY5, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX6, cleanLoadingSquareY6, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX7, cleanLoadingSquareY7, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX8, cleanLoadingSquareY8, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX9, cleanLoadingSquareY9, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX10, cleanLoadingSquareY10, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX11, cleanLoadingSquareY11, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX12, cleanLoadingSquareY12, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX13, cleanLoadingSquareY13, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX14, cleanLoadingSquareY14, 20, 20);
-
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX1, printerLoadingSquareY1, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX2, printerLoadingSquareY2, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX3, printerLoadingSquareY3, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX4, printerLoadingSquareY4, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX5, printerLoadingSquareY5, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX6, printerLoadingSquareY6, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX7, printerLoadingSquareY7, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX8, printerLoadingSquareY8, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX9, printerLoadingSquareY9, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX10, printerLoadingSquareY10, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX11, printerLoadingSquareY11, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX12, printerLoadingSquareY12, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX13, printerLoadingSquareY13, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX14, printerLoadingSquareY14, 20, 20);
-
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX1, fixPowerBoxLoadingSquareY1, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX2, fixPowerBoxLoadingSquareY2, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX3, fixPowerBoxLoadingSquareY3, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX4, fixPowerBoxLoadingSquareY4, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX5, fixPowerBoxLoadingSquareY5, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX6, fixPowerBoxLoadingSquareY6, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX7, fixPowerBoxLoadingSquareY7, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX8, fixPowerBoxLoadingSquareY8, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX9, fixPowerBoxLoadingSquareY9, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX10, fixPowerBoxLoadingSquareY10, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX11, fixPowerBoxLoadingSquareY11, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX12, fixPowerBoxLoadingSquareY12, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX13, fixPowerBoxLoadingSquareY13, 20, 20);
-            e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX14, fixPowerBoxLoadingSquareY14, 20, 20);
-
-            for (int i = 0; i < bloodLineXList.Count(); i++)
+           if (gameTimer.Enabled == true)
             {
-                e.Graphics.FillEllipse(redBrush, bloodLineXList[i], bloodLineYList[i], 10, 50);
+                e.Graphics.FillRectangle(whiteBrush, 400, 0, 15, 800);
+                e.Graphics.FillRectangle(blackBrush, 225, 300, 10, 100);
+                e.Graphics.FillRectangle(blackBrush, 155, 300, 10, 100);
+                e.Graphics.FillRectangle(blackBrush, 155, 400, 80, 10);
+                e.Graphics.FillRectangle(blackBrush, 155, 300, 80, 10);
+
+                e.Graphics.FillRectangle(brownBrush, freddyCubeX, freddyCubeY, 10, 10);
+                e.Graphics.FillRectangle(purpleBrush, bonnieCubeX, bonnieCubeY, 10, 10);
+                e.Graphics.FillRectangle(yellowBrush, chicaCubeX, chicaCubeY, 10, 10);
+                e.Graphics.FillRectangle(redBrush, foxyCubeX, foxyCubeY, 10, 10);
+
+                e.Graphics.FillRectangle(yellowBrush, doorLeftX, doorLeftY, 15, 60);
+                e.Graphics.FillRectangle(yellowBrush, doorRightX, doorRightY, 15, 60);
+                e.Graphics.FillRectangle(yellowBrush, doorBackX, doorBackY, 45, 15);
+
+                e.Graphics.FillRectangle(greenBrush, doorLeftGreenX, doorLeftGreenY, 20, 20);
+                e.Graphics.FillRectangle(yellowBrush, doorLeftYellowX, doorLeftYellowY, 20, 20);
+                e.Graphics.FillRectangle(redBrush, doorLeftRedX, doorLeftRedY, 20, 20);
+
+                e.Graphics.FillRectangle(greenBrush, doorRightGreenX, doorRightGreenY, 20, 20);
+                e.Graphics.FillRectangle(yellowBrush, doorRightYellowX, doorRightYellowY, 20, 20);
+                e.Graphics.FillRectangle(redBrush, doorRightRedX, doorRightRedY, 20, 20);
+
+                e.Graphics.FillRectangle(greenBrush, doorBackGreenX, doorBackGreenY, 20, 20);
+                e.Graphics.FillRectangle(yellowBrush, doorBackYellowX, doorBackYellowY, 20, 20);
+                e.Graphics.FillRectangle(redBrush, doorBackRedX, doorBackRedY, 20, 20);
+
+                e.Graphics.FillRectangle(whiteBrush, 440, 74, 260, 20);
+                e.Graphics.FillRectangle(whiteBrush, 440, 168, 260, 20);
+                e.Graphics.FillRectangle(whiteBrush, 440, 274, 260, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX1, cleanLoadingSquareY1, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX2, cleanLoadingSquareY2, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX3, cleanLoadingSquareY3, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX4, cleanLoadingSquareY4, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX5, cleanLoadingSquareY5, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX6, cleanLoadingSquareY6, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX7, cleanLoadingSquareY7, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX8, cleanLoadingSquareY8, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX9, cleanLoadingSquareY9, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX10, cleanLoadingSquareY10, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX11, cleanLoadingSquareY11, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX12, cleanLoadingSquareY12, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX13, cleanLoadingSquareY13, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX14, cleanLoadingSquareY14, 20, 20);
+
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX1, printerLoadingSquareY1, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX2, printerLoadingSquareY2, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX3, printerLoadingSquareY3, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX4, printerLoadingSquareY4, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX5, printerLoadingSquareY5, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX6, printerLoadingSquareY6, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX7, printerLoadingSquareY7, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX8, printerLoadingSquareY8, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX9, printerLoadingSquareY9, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX10, printerLoadingSquareY10, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX11, printerLoadingSquareY11, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX12, printerLoadingSquareY12, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX13, printerLoadingSquareY13, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX14, printerLoadingSquareY14, 20, 20);
+
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX1, fixPowerBoxLoadingSquareY1, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX2, fixPowerBoxLoadingSquareY2, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX3, fixPowerBoxLoadingSquareY3, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX4, fixPowerBoxLoadingSquareY4, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX5, fixPowerBoxLoadingSquareY5, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX6, fixPowerBoxLoadingSquareY6, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX7, fixPowerBoxLoadingSquareY7, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX8, fixPowerBoxLoadingSquareY8, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX9, fixPowerBoxLoadingSquareY9, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX10, fixPowerBoxLoadingSquareY10, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX11, fixPowerBoxLoadingSquareY11, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX12, fixPowerBoxLoadingSquareY12, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX13, fixPowerBoxLoadingSquareY13, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX14, fixPowerBoxLoadingSquareY14, 20, 20);
             }
+           else if (gameOverBlood.Enabled == true)
+            {
+                for (int i = 0; i < bloodLineXList.Count(); i++)
+                {
+                    e.Graphics.FillEllipse(redBrush, bloodLineXList[i], bloodLineYList[i], 10, 50);
+                }
+                gameOverLabel.Visible = true;
+            }      
+           
         }
 
         private void GameTimer_Tick(object sender, EventArgs e)
         {
+            //Freddy, Bonnie, Chica, and Foxy AI.
             if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddyPosition == cameraOne)
             {
                 freddyPosition = cameraTwo;
@@ -335,10 +343,34 @@ namespace NightWatch
             }
             else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddyPosition == cameraSix && doorRightControls == 0)
             {
-                death = 1; // Application.Exit();
+                //Game Over message (Freddy)
+                death = 1;
+                gameOverBlood.Enabled = true;
+                gameTimer.Enabled = false;
+                printerButton.Visible = false;
+                cleanButton.Visible = false;
+                powerBoxButton.Visible = false;
+                leftDoorButton.Visible = false;
+                rightDoorButton.Visible = false;
+                backDoorButton.Visible = false;
+                cameraOneButton.Visible = false;
+                cameraTwoButton.Visible = false;
+                cameraThreeButton.Visible = false;
+                cameraFourButton.Visible = false;
+                cameraFiveButton.Visible = false;
+                cameraSixButton.Visible = false;
+                errorOneButton.Visible = false;
+                errorTwoButton.Visible = false;
+                youLabel.Visible = false;
+                timeLabel.Visible = false;
+                detectedFreddyLabel.Visible = false;
+                detectedBonnieLabel.Visible = false;
+                detectedChicaLabel.Visible = false;
+                detectedFoxyLabel.Visible = false;
             }
             else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddyPosition == cameraSix && doorRightControls == 1)
             {
+                //Reset AI (Freedy)
                 freddyPosition = cameraOne;
                 freddyMovementTimer = randGen.Next(20000, 46000);
                 freddyWatch.Reset();
@@ -369,10 +401,34 @@ namespace NightWatch
             }
             else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonniePosition == cameraFive && doorLeftControls == 0)
             {
-                death = 1;  //Application.Exit();
+                //Game Over message (Bonnie)
+                death = 1;
+                gameOverBlood.Enabled = true;
+                gameTimer.Enabled = false;
+                printerButton.Visible = false;
+                cleanButton.Visible = false;
+                powerBoxButton.Visible = false;
+                leftDoorButton.Visible = false;
+                rightDoorButton.Visible = false;
+                backDoorButton.Visible = false;
+                cameraOneButton.Visible = false;
+                cameraTwoButton.Visible = false;
+                cameraThreeButton.Visible = false;
+                cameraFourButton.Visible = false;
+                cameraFiveButton.Visible = false;
+                cameraSixButton.Visible = false;
+                errorOneButton.Visible = false;
+                errorTwoButton.Visible = false;
+                youLabel.Visible = false;
+                timeLabel.Visible = false;
+                detectedFreddyLabel.Visible = false;
+                detectedBonnieLabel.Visible = false;
+                detectedChicaLabel.Visible = false;
+                detectedFoxyLabel.Visible = false;
             }
             else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonniePosition == cameraFive && doorLeftControls == 1)
             {
+                //Reset AI (Bonnie)
                 bonniePosition = cameraOne;
                 bonnieMovementTimer = randGen.Next(15000, 30000);
                 bonnieWatch.Reset();
@@ -402,10 +458,34 @@ namespace NightWatch
             }
             else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chicaPosition == cameraSix && doorRightControls == 0)
             {
-                death = 1; //Application.Exit();
+                //Game Over message (Chica)
+                death = 1;
+                gameOverBlood.Enabled = true;
+                gameTimer.Enabled = false;
+                printerButton.Visible = false;
+                cleanButton.Visible = false;
+                powerBoxButton.Visible = false;
+                leftDoorButton.Visible = false;
+                rightDoorButton.Visible = false;
+                backDoorButton.Visible = false;
+                cameraOneButton.Visible = false;
+                cameraTwoButton.Visible = false;
+                cameraThreeButton.Visible = false;
+                cameraFourButton.Visible = false;
+                cameraFiveButton.Visible = false;
+                cameraSixButton.Visible = false;
+                errorOneButton.Visible = false;
+                errorTwoButton.Visible = false;
+                youLabel.Visible = false;
+                timeLabel.Visible = false;
+                detectedFreddyLabel.Visible = false;
+                detectedBonnieLabel.Visible = false;
+                detectedChicaLabel.Visible = false;
+                detectedFoxyLabel.Visible = false;
             }
             else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chicaPosition == cameraSix && doorRightControls == 1)
             {
+                //Reset AI (Chica)
                 chicaPosition = cameraOne;
                 chicaMovementTimer = randGen.Next(15000, 30000);
                 chicaWatch.Reset();
@@ -426,13 +506,38 @@ namespace NightWatch
                 foxyMovementTimer = randGen.Next(5000, 10000);
                 foxyWatch.Reset();
                 foxyWatch.Start();
-            }         
+            }
             else if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxyPosition == error2 && doorBackControls == 0)
             {
-                death = 1; //Application.Exit();
+                //Game Over message (Foxy)
+                death = 1; 
+                gameOverBlood.Enabled = true;
+                gameTimer.Enabled = false;
+                printerButton.Visible = false;
+                cleanButton.Visible = false;
+                powerBoxButton.Visible = false;
+                leftDoorButton.Visible = false;
+                rightDoorButton.Visible = false;
+                backDoorButton.Visible = false;
+                cameraOneButton.Visible = false;
+                cameraTwoButton.Visible = false;
+                cameraThreeButton.Visible = false;
+                cameraFourButton.Visible = false;
+                cameraFiveButton.Visible = false;
+                cameraSixButton.Visible = false;
+                errorOneButton.Visible = false;
+                errorTwoButton.Visible = false;
+                youLabel.Visible = false;
+                timeLabel.Visible = false;
+                detectedFreddyLabel.Visible = false;
+                detectedBonnieLabel.Visible = false;
+                detectedChicaLabel.Visible = false;
+                detectedFoxyLabel.Visible = false;
+
             }
             else if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxyPosition == error2 && doorBackControls == 1)
             {
+                //Reset AI (Foxy)
                 foxyPosition = cameraOne;
                 hitDoorSound.Play();
                 foxyMovementTimer = randGen.Next(10000, 15000);
@@ -440,22 +545,25 @@ namespace NightWatch
                 foxyWatch.Start();
             }
 
+            //Time till left door to turn green
             if (doorLeftWatch.ElapsedMilliseconds > 4000)
             {
                 doorLeftGreenX = 510;
                 doorLeftGreenY = 425;
             }
+            //Time till right door to turn green
             if (doorRightWatch.ElapsedMilliseconds > 4000)
             {
                 doorRightGreenX = 700;
                 doorRightGreenY = 425;
             }
+            //Time till back door to turn green
             if (doorBackWatch.ElapsedMilliseconds > 4000)
             {
                 doorBackGreenX = 605;
                 doorBackGreenY = 515;
             }
-
+            //Time till left door to turn yellow
             if (doorLeftWatch.ElapsedMilliseconds > 8000)
             {
                 doorLeftGreenX = -50;
@@ -464,6 +572,7 @@ namespace NightWatch
                 doorLeftYellowX = 510;
                 doorLeftYellowY = 425;
             }
+            //Time till right door to turn yellow
             if (doorRightWatch.ElapsedMilliseconds > 8000)
             {
                 doorRightGreenX = -50;
@@ -472,6 +581,7 @@ namespace NightWatch
                 doorRightYellowX = 700;
                 doorRightYellowY = 425;
             }
+            //Time till back door to turn yellow
             if (doorBackWatch.ElapsedMilliseconds > 8000)
             {
                 doorBackGreenX = -50;
@@ -480,7 +590,7 @@ namespace NightWatch
                 doorBackYellowX = 605;
                 doorBackYellowY = 515;
             }
-
+            //Time till left door to turn red and disable left door
             if (doorLeftWatch.ElapsedMilliseconds > 12000)
             {
                 doorLeftGreenX = -50;
@@ -499,6 +609,7 @@ namespace NightWatch
                 doorLeftY = -50;
                 leftDoorButton.Enabled = false;
             }
+            //Cooldown for left door until enable again 
             if (coolDownLeft.ElapsedMilliseconds > 5000)
             {
                 doorLeftWatch.Stop();
@@ -509,6 +620,7 @@ namespace NightWatch
                 doorLeftRedX = -50;
                 doorLeftRedY = -50;
             }
+            //Time till right door to turn red and disable right door
             if (doorRightWatch.ElapsedMilliseconds > 12000)
             {
                 doorRightGreenX = -50;
@@ -527,6 +639,7 @@ namespace NightWatch
                 doorRightY = -50;
                 rightDoorButton.Enabled = false;
             }
+            //Cooldown for right door until enable again 
             if (coolDownRight.ElapsedMilliseconds > 5000)
             {
                 doorRightWatch.Stop();
@@ -537,6 +650,7 @@ namespace NightWatch
                 doorRightRedX = -50;
                 doorRightRedY = -50;
             }
+            //Time till back door to turn red and disable right door
             if (doorBackWatch.ElapsedMilliseconds > 12000)
             {
                 doorBackGreenX = -50;
@@ -555,6 +669,7 @@ namespace NightWatch
                 doorBackY = -50;
                 backDoorButton.Enabled = false;
             }
+            //Cooldown for back door until enable again 
             if (coolDownBack.ElapsedMilliseconds > 5000)
             {
                 doorBackWatch.Stop();
@@ -565,47 +680,65 @@ namespace NightWatch
                 doorBackRedX = -50;
                 doorBackRedY = -50;
             }
+            //Enable left door 
             if (powerBackOnLeftWatch.ElapsedMilliseconds > 3000)
             {
                 powerBackOnLeftWatch.Stop();
                 powerBackOnLeftWatch.Reset();
                 leftDoorButton.Enabled = true;
             }
+            //Enable right door
             if (powerBackOnRightWatch.ElapsedMilliseconds > 3000)
             {
                 powerBackOnRightWatch.Stop();
                 powerBackOnRightWatch.Reset();
                 rightDoorButton.Enabled = true;
             }
+            //Enable back door
             if (powerBackOnBackWatch.ElapsedMilliseconds > 3000)
             {
                 powerBackOnBackWatch.Stop();
                 powerBackOnBackWatch.Reset();
                 backDoorButton.Enabled = true;
             }
-            if (death == 1)
+           
+            //Countdown till game over
+            time--;
+            timeLabel.Text = $"Time Left: {time}";
+
+            if (time == 0)
             {
-                bloodLineYList.Add(randGen.Next(this.Height));
-                bloodLineXList.Add(randGen.Next(10, this.Width - 30));
-            }
-            for (int i = 0; i < bloodLineYList.Count(); i++)
-            {
-                if (bloodLineYList[i] > 600)
-                {
-                    bloodLineXList.RemoveAt(i);
-                    bloodLineYList.RemoveAt(i);
-                    break;
-                }
-            }
-            for (int i = 0; i < bloodLineYList.Count(); i++)
-            {
-                bloodLineYList[i] += 8;
+                death = 1;
+                gameOverBlood.Enabled = true;
+                gameTimer.Enabled = false;
+                printerButton.Visible = false;
+                cleanButton.Visible = false;
+                powerBoxButton.Visible = false;
+                leftDoorButton.Visible = false;
+                rightDoorButton.Visible = false;
+                backDoorButton.Visible = false;
+                cameraOneButton.Visible = false;
+                cameraTwoButton.Visible = false;
+                cameraThreeButton.Visible = false;
+                cameraFourButton.Visible = false;
+                cameraFiveButton.Visible = false;
+                cameraSixButton.Visible = false;
+                errorOneButton.Visible = false;
+                errorTwoButton.Visible = false;
+                youLabel.Visible = false;
+                timeLabel.Visible = false;
+                detectedFreddyLabel.Visible = false;
+                detectedBonnieLabel.Visible = false;
+                detectedChicaLabel.Visible = false;
+                detectedFoxyLabel.Visible = false;
             }
             Refresh();
         }
 
         private void CameraOneButton_Click(object sender, EventArgs e)
         {
+            cameraSound.Play();
+            //Showe where freddy, bonnie, chica, and foxy position if click on any camera button
             if (freddyPosition == cameraOne)
             {
                 freddyCubeX = 320;
@@ -661,6 +794,7 @@ namespace NightWatch
 
         private void CameraTwoButton_Click(object sender, EventArgs e)
         {
+            cameraSound.Play();
             if (freddyPosition == cameraTwo)
             {
                 freddyCubeX = 320;
@@ -683,7 +817,7 @@ namespace NightWatch
             {
                 detectedBonnieLabel.Text = "None detected";
                 bonnieCubeX = -50;
-                bonnieCubeY = -50;         
+                bonnieCubeY = -50;
             }
             if (chicaPosition == cameraTwo)
             {
@@ -706,6 +840,7 @@ namespace NightWatch
         }
         private void CameraThreeButton_Click(object sender, EventArgs e)
         {
+            cameraSound.Play();
             if (bonniePosition == cameraThree)
             {
                 bonnieCubeX = 300;
@@ -713,10 +848,10 @@ namespace NightWatch
                 detectedBonnieLabel.Text = "Bonnie detected";
             }
             else
-            {          
+            {
                 detectedBonnieLabel.Text = "None detected";
                 bonnieCubeX = -50;
-                bonnieCubeY = -50;           
+                bonnieCubeY = -50;
             }
             if (freddyPosition != cameraThree)
             {
@@ -740,6 +875,7 @@ namespace NightWatch
 
         private void CameraFourButton_Click(object sender, EventArgs e)
         {
+            cameraSound.Play();
             if (freddyPosition == cameraFour)
             {
                 freddyCubeX = 320;
@@ -760,7 +896,7 @@ namespace NightWatch
             }
             if (chicaPosition == cameraFour)
             {
-                chicaCubeX = 320;
+                chicaCubeX = 340;
                 chicaCubeY = 460;
                 detectedChicaLabel.Text = "Chica detected";
             }
@@ -780,6 +916,7 @@ namespace NightWatch
 
         private void CameraFiveButton_Click(object sender, EventArgs e)
         {
+            cameraSound.Play();
             if (bonniePosition == cameraFive)
             {
                 bonnieCubeX = 300;
@@ -814,6 +951,7 @@ namespace NightWatch
 
         private void CameraSixButton_Click(object sender, EventArgs e)
         {
+            cameraSound.Play();
             if (freddyPosition == cameraSix)
             {
                 freddyCubeX = 320;
@@ -834,7 +972,7 @@ namespace NightWatch
             }
             if (chicaPosition == cameraSix)
             {
-                chicaCubeX = 320;
+                chicaCubeX = 340;
                 chicaCubeY = 460;
                 detectedChicaLabel.Text = "Chica detected";
             }
@@ -870,18 +1008,22 @@ namespace NightWatch
             }
         }
 
+        //display left door on button press
         private void LeftDoorButton_Click(object sender, EventArgs e)
         {
             if (doorLeftControls == 0)
             {
+                doorCloseSound.Play();
                 leftDoorButton.BackColor = Color.GreenYellow;
                 doorLeftWatch.Start();
                 doorLeftX = 150;
                 doorLeftY = 325;
                 doorLeftControls = 1;
-            }        
+            }
+            //If click again hide left door and reset
             else if (doorLeftControls == 1)
             {
+                doorOpenSound.Play();
                 leftDoorButton.BackColor = Color.Transparent;
                 doorLeftWatch.Stop();
                 doorLeftWatch.Reset();
@@ -901,19 +1043,22 @@ namespace NightWatch
             }
 
         }
-
+        //display right door on button press
         private void RightDoorButton_Click(object sender, EventArgs e)
         {
             if (doorRightControls == 0)
             {
+                doorCloseSound.Play();
                 rightDoorButton.BackColor = Color.GreenYellow;
                 doorRightWatch.Start();
                 doorRightX = 225;
                 doorRightY = 325;
                 doorRightControls = 1;
             }
+            //If click again hide right door and reset
             else if (doorRightControls == 1)
             {
+                doorOpenSound.Play();
                 rightDoorButton.BackColor = Color.Transparent;
                 doorRightWatch.Stop();
                 doorRightWatch.Reset();
@@ -932,19 +1077,22 @@ namespace NightWatch
                 rightDoorButton.Enabled = false;
             }
         }
-
+        //display back door on button press
         private void BackDoorButton_Click(object sender, EventArgs e)
         {
             if (doorBackControls == 0)
             {
+                doorCloseSound.Play();
                 backDoorButton.BackColor = Color.GreenYellow;
                 doorBackWatch.Start();
                 doorBackX = 172;
                 doorBackY = 400;
                 doorBackControls = 1;
             }
+            //If click again hide back door and reset
             else if (doorBackControls == 1)
             {
+                doorOpenSound.Play();
                 backDoorButton.BackColor = Color.Transparent;
                 doorBackWatch.Stop();
                 doorBackWatch.Reset();
@@ -965,6 +1113,7 @@ namespace NightWatch
         }
         private void CleanButton_MouseDown(object sender, MouseEventArgs e)
         {
+            cleaningSound.Play();
             cleanTimer.Enabled = true;
             cleanWatch.Start();
         }
@@ -974,12 +1123,9 @@ namespace NightWatch
             cleanWatch.Stop();
             cleanTimer.Enabled = false;
         }
-
+        // Loading bar (clean)
         private void CleanTimer_Tick(object sender, EventArgs e)
         {
-            //   test++;
-            //   cleanButton.Text = $"test {test}";
-
             if (cleanWatch.ElapsedMilliseconds > 2000)
             {
                 cleanLoadingSquareX1 = 440;
@@ -1047,6 +1193,7 @@ namespace NightWatch
             }
             if (cleanWatch.ElapsedMilliseconds > 28000)
             {
+                doneSound.Play();
                 cleanTimer.Enabled = false;
                 cleanLoadingSquareX14 = 680;
                 cleanLoadingSquareY14 = 74;
@@ -1057,6 +1204,7 @@ namespace NightWatch
 
         private void PrinterButton_MouseDown(object sender, MouseEventArgs e)
         {
+            printerSound.Play();
             printerTimer.Enabled = true;
             printerWatch.Start();
         }
@@ -1064,80 +1212,81 @@ namespace NightWatch
         private void PrinterButton_MouseUp(object sender, MouseEventArgs e)
         {
             printerWatch.Stop();
-            printerTimer.Enabled = false;          
+            printerTimer.Enabled = false;
         }
-
+        //Loading bar (printer)
         private void PrinterTimer_Tick(object sender, EventArgs e)
         {
-            if (printerWatch.ElapsedMilliseconds > 2000)
+            if (printerWatch.ElapsedMilliseconds > 3000)
             {
                 printerLoadingSquareX1 = 440;
                 printerLoadingSquareY1 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 4000)
+            if (printerWatch.ElapsedMilliseconds > 6000)
             {
                 printerLoadingSquareX2 = 460;
                 printerLoadingSquareY2 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 6000)
+            if (printerWatch.ElapsedMilliseconds > 9000)
             {
                 printerLoadingSquareX3 = 480;
                 printerLoadingSquareY3 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 8000)
+            if (printerWatch.ElapsedMilliseconds > 12000)
             {
                 printerLoadingSquareX4 = 500;
                 printerLoadingSquareY4 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 10000)
+            if (printerWatch.ElapsedMilliseconds > 15000)
             {
                 printerLoadingSquareX5 = 520;
                 printerLoadingSquareY5 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 12000)
+            if (printerWatch.ElapsedMilliseconds > 18000)
             {
                 printerLoadingSquareX6 = 540;
                 printerLoadingSquareY6 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 14000)
+            if (printerWatch.ElapsedMilliseconds > 21000)
             {
                 printerLoadingSquareX7 = 540;
                 printerLoadingSquareY7 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 16000)
+            if (printerWatch.ElapsedMilliseconds > 24000)
             {
                 printerLoadingSquareX8 = 560;
                 printerLoadingSquareY8 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 18000)
+            if (printerWatch.ElapsedMilliseconds > 27000)
             {
                 printerLoadingSquareX9 = 580;
                 printerLoadingSquareY9 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 20000)
+            if (printerWatch.ElapsedMilliseconds > 30000)
             {
                 printerLoadingSquareX10 = 600;
                 printerLoadingSquareY10 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 22000)
+            if (printerWatch.ElapsedMilliseconds > 33000)
             {
                 printerLoadingSquareX11 = 620;
                 printerLoadingSquareY11 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 24000)
+            if (printerWatch.ElapsedMilliseconds > 36000)
             {
                 printerLoadingSquareX12 = 640;
                 printerLoadingSquareY12 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 26000)
+            if (printerWatch.ElapsedMilliseconds > 39000)
             {
                 printerLoadingSquareX13 = 660;
                 printerLoadingSquareY13 = 168;
             }
-            if (printerWatch.ElapsedMilliseconds > 28000)
+            if (printerWatch.ElapsedMilliseconds > 42000)
             {
+                doneSound.Play();
                 printerLoadingSquareX14 = 680;
-                printerLoadingSquareY14 = 168;               
+                printerLoadingSquareY14 = 168;
                 printerButton.Enabled = false;
                 powerBoxButton.Enabled = true;
             }
@@ -1145,6 +1294,7 @@ namespace NightWatch
 
         private void PowerBoxButton_MouseDown(object sender, MouseEventArgs e)
         {
+            powerBoxSound.Play();
             powerBoxTimer.Enabled = true;
             fixPowerBoxWatch.Start();
         }
@@ -1154,81 +1304,130 @@ namespace NightWatch
             fixPowerBoxWatch.Stop();
             powerBoxTimer.Enabled = false;
         }
-
+        //Loading bar (power box)
         private void PowerBoxTimer_Tick(object sender, EventArgs e)
         {
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 2000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 3500)
             {
                 fixPowerBoxLoadingSquareX1 = 440;
                 fixPowerBoxLoadingSquareY1 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 4000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 6500)
             {
                 fixPowerBoxLoadingSquareX2 = 460;
                 fixPowerBoxLoadingSquareY2 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 6000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 9500)
             {
                 fixPowerBoxLoadingSquareX3 = 480;
                 fixPowerBoxLoadingSquareY3 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 8000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 12500)
             {
                 fixPowerBoxLoadingSquareX4 = 500;
                 fixPowerBoxLoadingSquareY4 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 10000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 15500)
             {
                 fixPowerBoxLoadingSquareX5 = 520;
                 fixPowerBoxLoadingSquareY5 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 12000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 18500)
             {
                 fixPowerBoxLoadingSquareX6 = 540;
                 fixPowerBoxLoadingSquareY6 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 14000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 21500)
             {
                 fixPowerBoxLoadingSquareX7 = 540;
                 fixPowerBoxLoadingSquareY7 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 16000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 24500)
             {
                 fixPowerBoxLoadingSquareX8 = 560;
                 fixPowerBoxLoadingSquareY8 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 18000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 27500)
             {
                 fixPowerBoxLoadingSquareX9 = 580;
                 fixPowerBoxLoadingSquareY9 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 20000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 30500)
             {
                 fixPowerBoxLoadingSquareX10 = 600;
                 fixPowerBoxLoadingSquareY10 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 22000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 33500)
             {
                 fixPowerBoxLoadingSquareX11 = 620;
                 fixPowerBoxLoadingSquareY11 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 24000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 36500)
             {
                 fixPowerBoxLoadingSquareX12 = 640;
                 fixPowerBoxLoadingSquareY12 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 26000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 39500)
             {
                 fixPowerBoxLoadingSquareX13 = 660;
                 fixPowerBoxLoadingSquareY13 = 274;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 28000)
+            if (fixPowerBoxWatch.ElapsedMilliseconds > 42500)
             {
+                //Win screen
+                cheerSound.Play();
                 gameTimer.Enabled = false;
                 fixPowerBoxLoadingSquareX14 = 680;
                 fixPowerBoxLoadingSquareY14 = 274;
                 powerBoxButton.Enabled = false;
+                winLabel.Visible = true;
+                printerButton.Visible = false;
+                cleanButton.Visible = false;
+                powerBoxButton.Visible = false;
+                leftDoorButton.Visible = false;
+                rightDoorButton.Visible = false;
+                backDoorButton.Visible = false;
+                cameraOneButton.Visible = false;
+                cameraTwoButton.Visible = false;
+                cameraThreeButton.Visible = false;
+                cameraFourButton.Visible = false;
+                cameraFiveButton.Visible = false;
+                cameraSixButton.Visible = false;
+                errorOneButton.Visible = false;
+                errorTwoButton.Visible = false;
+                youLabel.Visible = false;
+                timeLabel.Visible = false;
+                detectedFreddyLabel.Visible = false;
+                detectedBonnieLabel.Visible = false;
+                detectedChicaLabel.Visible = false;
+                detectedFoxyLabel.Visible = false;
+                Refresh();
             }
+        }
+        //Blood effect (game over)
+        private void GameOverBlood_Tick(object sender, EventArgs e)
+        {
+            gameOverSound.Play();
+            if (death == 1)
+            {
+                bloodLineYList.Add(randGen.Next(this.Height));
+                bloodLineXList.Add(randGen.Next(10, this.Width - 30));
+            }
+            for (int i = 0; i < bloodLineYList.Count(); i++)
+            {
+                if (bloodLineYList[i] > 600)
+                {
+                    bloodLineXList.RemoveAt(i);
+                    bloodLineYList.RemoveAt(i);
+                    break;
+                }
+            }
+            for (int i = 0; i < bloodLineYList.Count(); i++)
+            {
+                bloodLineYList[i] += 8;
+            }
+
+            Refresh();
         }
     }
 }
