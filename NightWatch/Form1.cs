@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Media;
+using System.Xml;
 
 namespace NightWatch
 {
@@ -24,6 +25,8 @@ namespace NightWatch
 
         List<int> bloodLineXList = new List<int>();
         List<int> bloodLineYList = new List<int>();
+
+        public static List<RobotAI> aiList = new List<RobotAI>();
 
         int freddyPosition = 1;
         int freddyMovementTimer = 0;
@@ -212,9 +215,30 @@ namespace NightWatch
         SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.gameOver);
         SoundPlayer doneSound = new SoundPlayer(Properties.Resources.glassPing);
 
+        RobotAI freddy;
+        RobotAI bonnie;
+        RobotAI chica;
+        RobotAI foxy;
+
+        int robotAIx, robotAIy, robotAIPosition, robotAISize, robotAIType;
+
+
         public nightWatchTitle()
         {
             InitializeComponent();
+
+            freddy = new RobotAI(robotAIx, robotAIy, robotAIPosition, robotAISize, robotAIType, new SolidBrush(Color.Brown));
+            aiList.Add(freddy);
+
+            bonnie = new RobotAI(robotAIx, robotAIy, robotAIPosition, robotAISize, robotAIType,new SolidBrush(Color.Purple));
+            aiList.Add(bonnie);
+
+            chica = new RobotAI(robotAIx, robotAIy, robotAIPosition, robotAISize, robotAIType, new SolidBrush(Color.Yellow));
+            aiList.Add(chica);
+
+            foxy = new RobotAI(robotAIx, robotAIy, robotAIPosition, robotAISize, robotAIType,new SolidBrush(Color.Red));
+            aiList.Add(foxy);
+
             freddyWatch.Start();
             bonnieWatch.Start();
             chicaWatch.Start();
@@ -229,84 +253,89 @@ namespace NightWatch
      
         private void NightWatchTitle_Paint(object sender, PaintEventArgs e)
         {
-           if (gameTimer.Enabled == true)
+            foreach (RobotAI r in aiList)
             {
-                e.Graphics.FillRectangle(whiteBrush, 400, 0, 15, 800);
-                e.Graphics.FillRectangle(blackBrush, 225, 300, 10, 100);
-                e.Graphics.FillRectangle(blackBrush, 155, 300, 10, 100);
-                e.Graphics.FillRectangle(blackBrush, 155, 400, 80, 10);
-                e.Graphics.FillRectangle(blackBrush, 155, 300, 80, 10);
-
-                e.Graphics.FillRectangle(brownBrush, freddyCubeX, freddyCubeY, 10, 10);
-                e.Graphics.FillRectangle(purpleBrush, bonnieCubeX, bonnieCubeY, 10, 10);
-                e.Graphics.FillRectangle(yellowBrush, chicaCubeX, chicaCubeY, 10, 10);
-                e.Graphics.FillRectangle(redBrush, foxyCubeX, foxyCubeY, 10, 10);
-
-                e.Graphics.FillRectangle(yellowBrush, doorLeftX, doorLeftY, 15, 60);
-                e.Graphics.FillRectangle(yellowBrush, doorRightX, doorRightY, 15, 60);
-                e.Graphics.FillRectangle(yellowBrush, doorBackX, doorBackY, 45, 15);
-
-                e.Graphics.FillRectangle(greenBrush, doorLeftGreenX, doorLeftGreenY, 20, 20);
-                e.Graphics.FillRectangle(yellowBrush, doorLeftYellowX, doorLeftYellowY, 20, 20);
-                e.Graphics.FillRectangle(redBrush, doorLeftRedX, doorLeftRedY, 20, 20);
-
-                e.Graphics.FillRectangle(greenBrush, doorRightGreenX, doorRightGreenY, 20, 20);
-                e.Graphics.FillRectangle(yellowBrush, doorRightYellowX, doorRightYellowY, 20, 20);
-                e.Graphics.FillRectangle(redBrush, doorRightRedX, doorRightRedY, 20, 20);
-
-                e.Graphics.FillRectangle(greenBrush, doorBackGreenX, doorBackGreenY, 20, 20);
-                e.Graphics.FillRectangle(yellowBrush, doorBackYellowX, doorBackYellowY, 20, 20);
-                e.Graphics.FillRectangle(redBrush, doorBackRedX, doorBackRedY, 20, 20);
-
-                e.Graphics.FillRectangle(whiteBrush, 440, 74, 260, 20);
-                e.Graphics.FillRectangle(whiteBrush, 440, 168, 260, 20);
-                e.Graphics.FillRectangle(whiteBrush, 440, 274, 260, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX1, cleanLoadingSquareY1, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX2, cleanLoadingSquareY2, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX3, cleanLoadingSquareY3, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX4, cleanLoadingSquareY4, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX5, cleanLoadingSquareY5, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX6, cleanLoadingSquareY6, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX7, cleanLoadingSquareY7, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX8, cleanLoadingSquareY8, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX9, cleanLoadingSquareY9, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX10, cleanLoadingSquareY10, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX11, cleanLoadingSquareY11, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX12, cleanLoadingSquareY12, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX13, cleanLoadingSquareY13, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX14, cleanLoadingSquareY14, 20, 20);
-
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX1, printerLoadingSquareY1, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX2, printerLoadingSquareY2, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX3, printerLoadingSquareY3, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX4, printerLoadingSquareY4, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX5, printerLoadingSquareY5, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX6, printerLoadingSquareY6, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX7, printerLoadingSquareY7, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX8, printerLoadingSquareY8, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX9, printerLoadingSquareY9, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX10, printerLoadingSquareY10, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX11, printerLoadingSquareY11, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX12, printerLoadingSquareY12, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX13, printerLoadingSquareY13, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX14, printerLoadingSquareY14, 20, 20);
-
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX1, fixPowerBoxLoadingSquareY1, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX2, fixPowerBoxLoadingSquareY2, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX3, fixPowerBoxLoadingSquareY3, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX4, fixPowerBoxLoadingSquareY4, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX5, fixPowerBoxLoadingSquareY5, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX6, fixPowerBoxLoadingSquareY6, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX7, fixPowerBoxLoadingSquareY7, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX8, fixPowerBoxLoadingSquareY8, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX9, fixPowerBoxLoadingSquareY9, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX10, fixPowerBoxLoadingSquareY10, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX11, fixPowerBoxLoadingSquareY11, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX12, fixPowerBoxLoadingSquareY12, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX13, fixPowerBoxLoadingSquareY13, 20, 20);
-                e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX14, fixPowerBoxLoadingSquareY14, 20, 20);
+                e.Graphics.FillRectangle(r.brush, r.x, r.y, r.size, r.size);
             }
-           else if (gameOverBlood.Enabled == true)
+
+           //if (gameTimer.Enabled == true)
+           // {
+           //     e.Graphics.FillRectangle(whiteBrush, 400, 0, 15, 800);
+           //     e.Graphics.FillRectangle(blackBrush, 225, 300, 10, 100);
+           //     e.Graphics.FillRectangle(blackBrush, 155, 300, 10, 100);
+           //     e.Graphics.FillRectangle(blackBrush, 155, 400, 80, 10);
+           //     e.Graphics.FillRectangle(blackBrush, 155, 300, 80, 10);
+
+                //     e.Graphics.FillRectangle(brownBrush, freddyCubeX, freddyCubeY, 10, 10);
+                //     e.Graphics.FillRectangle(purpleBrush, bonnieCubeX, bonnieCubeY, 10, 10);
+                //     e.Graphics.FillRectangle(yellowBrush, chicaCubeX, chicaCubeY, 10, 10);
+                //     e.Graphics.FillRectangle(redBrush, foxyCubeX, foxyCubeY, 10, 10);
+
+                //     e.Graphics.FillRectangle(yellowBrush, doorLeftX, doorLeftY, 15, 60);
+                //     e.Graphics.FillRectangle(yellowBrush, doorRightX, doorRightY, 15, 60);
+                //     e.Graphics.FillRectangle(yellowBrush, doorBackX, doorBackY, 45, 15);
+
+                //     e.Graphics.FillRectangle(greenBrush, doorLeftGreenX, doorLeftGreenY, 20, 20);
+                //     e.Graphics.FillRectangle(yellowBrush, doorLeftYellowX, doorLeftYellowY, 20, 20);
+                //     e.Graphics.FillRectangle(redBrush, doorLeftRedX, doorLeftRedY, 20, 20);
+
+                //     e.Graphics.FillRectangle(greenBrush, doorRightGreenX, doorRightGreenY, 20, 20);
+                //     e.Graphics.FillRectangle(yellowBrush, doorRightYellowX, doorRightYellowY, 20, 20);
+                //     e.Graphics.FillRectangle(redBrush, doorRightRedX, doorRightRedY, 20, 20);
+
+                //     e.Graphics.FillRectangle(greenBrush, doorBackGreenX, doorBackGreenY, 20, 20);
+                //     e.Graphics.FillRectangle(yellowBrush, doorBackYellowX, doorBackYellowY, 20, 20);
+                //     e.Graphics.FillRectangle(redBrush, doorBackRedX, doorBackRedY, 20, 20);
+
+                //     e.Graphics.FillRectangle(whiteBrush, 440, 74, 260, 20);
+                //     e.Graphics.FillRectangle(whiteBrush, 440, 168, 260, 20);
+                //     e.Graphics.FillRectangle(whiteBrush, 440, 274, 260, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX1, cleanLoadingSquareY1, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX2, cleanLoadingSquareY2, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX3, cleanLoadingSquareY3, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX4, cleanLoadingSquareY4, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX5, cleanLoadingSquareY5, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX6, cleanLoadingSquareY6, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX7, cleanLoadingSquareY7, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX8, cleanLoadingSquareY8, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX9, cleanLoadingSquareY9, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX10, cleanLoadingSquareY10, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX11, cleanLoadingSquareY11, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX12, cleanLoadingSquareY12, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX13, cleanLoadingSquareY13, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX14, cleanLoadingSquareY14, 20, 20);
+
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX1, printerLoadingSquareY1, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX2, printerLoadingSquareY2, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX3, printerLoadingSquareY3, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX4, printerLoadingSquareY4, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX5, printerLoadingSquareY5, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX6, printerLoadingSquareY6, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX7, printerLoadingSquareY7, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX8, printerLoadingSquareY8, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX9, printerLoadingSquareY9, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX10, printerLoadingSquareY10, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX11, printerLoadingSquareY11, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX12, printerLoadingSquareY12, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX13, printerLoadingSquareY13, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX14, printerLoadingSquareY14, 20, 20);
+
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX1, fixPowerBoxLoadingSquareY1, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX2, fixPowerBoxLoadingSquareY2, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX3, fixPowerBoxLoadingSquareY3, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX4, fixPowerBoxLoadingSquareY4, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX5, fixPowerBoxLoadingSquareY5, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX6, fixPowerBoxLoadingSquareY6, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX7, fixPowerBoxLoadingSquareY7, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX8, fixPowerBoxLoadingSquareY8, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX9, fixPowerBoxLoadingSquareY9, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX10, fixPowerBoxLoadingSquareY10, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX11, fixPowerBoxLoadingSquareY11, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX12, fixPowerBoxLoadingSquareY12, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX13, fixPowerBoxLoadingSquareY13, 20, 20);
+                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX14, fixPowerBoxLoadingSquareY14, 20, 20);
+                // }
+            if (gameOverBlood.Enabled == true)
             {
                 for (int i = 0; i < bloodLineXList.Count(); i++)
                 {
@@ -737,180 +766,239 @@ namespace NightWatch
 
         private void CameraOneButton_Click(object sender, EventArgs e)
         {
+            //Show where freddy, bonnie, chica, and foxy position if click on any camera button
             cameraSound.Play();
-            //Showe where freddy, bonnie, chica, and foxy position if click on any camera button
-            if (freddyPosition == cameraOne)
+
+            foreach (RobotAI a in aiList)
             {
-                freddyCubeX = 320;
-                freddyCubeY = 460;
+                if (a.position == 1)
+                {
+                  freddy.x = 320;
+                  freddy.y = 460;
+
+                  bonnie.x = 300;
+                  bonnie.y = 460;
+
+                  chica.x = 340;
+                  chica.y = 460;
+
+                  foxy.x = 360;
+                  foxy.y = 460;
+                }
+                else
+                {
+                    freddy.x = -50;
+                    freddy.y = -50;
+
+                    bonnie.x = -50;
+                    bonnie.y = -50;
+
+                    chica.x = -50;
+                    chica.y = -50;
+
+                    foxy.x = -50;
+                    foxy.y = -50;
+                }
+            }
+            if (freddy.position == 1)
+            {
                 detectedFreddyLabel.Text = "Freddy detected";
             }
             else
             {
-                detectedFreddyLabel.Text = "None detected";
-                freddyCubeX = -50;
-                freddyCubeY = -50;
+                detectedFreddyLabel.Text = "No signal";
             }
-
-            if (bonniePosition == cameraOne)
+            if (bonnie.position == 1)
             {
-                bonnieCubeX = 300;
-                bonnieCubeY = 460;
                 detectedBonnieLabel.Text = "Bonnie detected";
             }
             else
             {
-                detectedBonnieLabel.Text = "None detected";
-                bonnieCubeX = -50;
-                bonnieCubeY = -50;
+                detectedBonnieLabel.Text = "No signal";
             }
-
-            if (chicaPosition == cameraOne)
+            if (chica.position == 1)
             {
-                chicaCubeX = 340;
-                chicaCubeY = 460;
                 detectedChicaLabel.Text = "Chica detected";
             }
             else
             {
-                detectedChicaLabel.Text = "None detected";
-                chicaCubeX = -50;
-                chicaCubeY = -50;
+                detectedChicaLabel.Text = "No signal";
             }
-
-            if (foxyPosition == cameraOne)
+            if (foxy.position == 1)
             {
-                foxyCubeX = 360;
-                foxyCubeY = 460;
                 detectedFoxyLabel.Text = "Foxy detected";
             }
             else
             {
-                detectedFoxyLabel.Text = "None detected";
-                foxyCubeX = -50;
-                foxyCubeY = -50;
+                detectedFoxyLabel.Text = "No signal";
             }
         }
 
         private void CameraTwoButton_Click(object sender, EventArgs e)
         {
             cameraSound.Play();
-            if (freddyPosition == cameraTwo)
+
+            foreach (RobotAI a in aiList)
             {
-                freddyCubeX = 320;
-                freddyCubeY = 460;
-                detectedFreddyLabel.Text = "Freddy detected";
-            }
-            else
-            {
-                detectedFreddyLabel.Text = "None detected";
-                freddyCubeX = -50;
-                freddyCubeY = -50;
-            }
-            if (bonniePosition == cameraTwo)
-            {
-                bonnieCubeX = 300;
-                bonnieCubeY = 460;
-                detectedBonnieLabel.Text = "Bonnie detected";
-            }
-            else
-            {
-                detectedBonnieLabel.Text = "None detected";
-                bonnieCubeX = -50;
-                bonnieCubeY = -50;
-            }
-            if (chicaPosition == cameraTwo)
-            {
-                chicaCubeX = 340;
-                chicaCubeY = 460;
-                detectedChicaLabel.Text = "Chica detected";
-            }
-            else
-            {
-                detectedChicaLabel.Text = "None detected";
-                chicaCubeX = -50;
-                chicaCubeY = -50;
-            }
-            if (foxyPosition != cameraTwo)
-            {
-                detectedFoxyLabel.Text = "None detected";
-                foxyCubeX = -50;
-                foxyCubeY = -50;
+                if (a.position == 2)
+                {
+                    freddy.x = 320;
+                    freddy.y = 460;
+
+                    bonnie.x = 300;
+                    bonnie.y = 460;
+
+                    chica.x = 340;
+                    chica.y = 460;
+                }
+                else
+                {
+                    freddy.x = -50;
+                    freddy.y = -50;
+
+                    bonnie.x = -50;
+                    bonnie.y = -50;
+
+                    chica.x = -50;
+                    chica.y = -50;
+
+                    foxy.x = -50;
+                    foxy.y = -50;
+                }
+
+                if (freddy.position == 2)
+                {
+                    detectedFreddyLabel.Text = "Freddy detected";
+                }
+                else
+                {
+                    detectedFreddyLabel.Text = "No signal";
+                }
+                if (bonnie.position == 2)
+                {
+                    detectedBonnieLabel.Text = "Bonnie detected";
+                }
+                else
+                {
+                    detectedBonnieLabel.Text = "No signal";
+                }
+                if (chica.position == 2)
+                {
+                    detectedChicaLabel.Text = "Chica detected";
+                }
+                else
+                {
+                    detectedChicaLabel.Text = "No signal";
+                }
+                if (foxy.position != 2)
+                { 
+                    detectedFoxyLabel.Text = "No signal";
+                }
             }
         }
+
         private void CameraThreeButton_Click(object sender, EventArgs e)
         {
             cameraSound.Play();
-            if (bonniePosition == cameraThree)
+
+            foreach (RobotAI a in aiList)
             {
-                bonnieCubeX = 300;
-                bonnieCubeY = 460;
-                detectedBonnieLabel.Text = "Bonnie detected";
-            }
-            else
-            {
-                detectedBonnieLabel.Text = "None detected";
-                bonnieCubeX = -50;
-                bonnieCubeY = -50;
-            }
-            if (freddyPosition != cameraThree)
-            {
-                detectedFreddyLabel.Text = "None detected";
-                freddyCubeX = -50;
-                freddyCubeY = -50;
-            }
-            if (chicaPosition != cameraThree)
-            {
-                detectedChicaLabel.Text = "None detected";
-                chicaCubeX = -50;
-                chicaCubeY = -50;
-            }
-            if (foxyPosition != cameraThree)
-            {
-                detectedFoxyLabel.Text = "None detected";
-                foxyCubeX = -50;
-                foxyCubeY = -50;
+                if (a.position == 3)
+                {
+                    bonnie.x = 300;
+                    bonnie.y = 460;
+                }
+                else
+                {
+                    freddy.x = -50;
+                    freddy.y = -50;
+
+                    bonnie.x = -50;
+                    bonnie.y = -50;
+
+                    chica.x = -50;
+                    chica.y = -50;
+
+                    foxy.x = -50;
+                    foxy.y = -50;
+                }
+
+                if (bonnie.position == 3)
+                {
+                    detectedBonnieLabel.Text = "Bonnie detected";
+                }
+                else
+                {
+                    detectedBonnieLabel.Text = "No signal";
+                }
+                if (freddy.position != 3)
+                {
+                    detectedFreddyLabel.Text = "No signal";
+                }
+                if (chica.position != 3)
+                {
+                    detectedChicaLabel.Text = "No signal";
+                }
+                if (foxy.position != 3)
+                {
+                    detectedFoxyLabel.Text = "No signal";
+                }
             }
         }
 
         private void CameraFourButton_Click(object sender, EventArgs e)
         {
             cameraSound.Play();
-            if (freddyPosition == cameraFour)
+
+
+            foreach (RobotAI a in aiList)
             {
-                freddyCubeX = 320;
-                freddyCubeY = 460;
-                detectedFreddyLabel.Text = "Freddy detected";
-            }
-            else
-            {
-                detectedFreddyLabel.Text = "None detected";
-                freddyCubeX = -50;
-                freddyCubeY = -50;
-            }
-            if (bonniePosition != cameraFour)
-            {
-                detectedBonnieLabel.Text = "None detected";
-                bonnieCubeX = -50;
-                bonnieCubeY = -50;
-            }
-            if (chicaPosition == cameraFour)
-            {
-                chicaCubeX = 340;
-                chicaCubeY = 460;
-                detectedChicaLabel.Text = "Chica detected";
-            }
-            else
-            {
-                detectedChicaLabel.Text = "None detected";
-                chicaCubeX = -50;
-                chicaCubeY = -50;
-            }
-            if (foxyPosition != cameraFour)
-            {
-                detectedFoxyLabel.Text = "None detected";
-                foxyCubeX = -50;
-                foxyCubeY = -50;
+                if (a.position == 4)
+                {
+                    freddy.x = 320;
+                    freddy.y = 460;
+
+                    chica.x = 340;
+                    chica.y = 460;
+                }
+                else
+                {
+                    freddy.x = -50;
+                    freddy.y = -50;
+
+                    bonnie.x = -50;
+                    bonnie.y = -50;
+
+                    chica.x = -50;
+                    chica.y = -50;
+
+                    foxy.x = -50;
+                    foxy.y = -50;
+                }
+                if (freddy.position == 4)
+                {
+                    detectedFreddyLabel.Text = "Freddy detected";
+                }
+                else
+                {
+                    detectedFreddyLabel.Text = "No signal";
+                }
+                if (bonnie.position != 4)
+                {
+                    detectedBonnieLabel.Text = "No signal";
+                }
+                if (chica.position == 4)
+                {
+                    detectedChicaLabel.Text = "Chica detected";
+                }
+                else
+                {
+                    detectedChicaLabel.Text = "No signal";
+                }
+                if (foxy.position != 4)
+                {
+                    detectedFoxyLabel.Text = "No signal";
+                }
             }
         }
 
@@ -1008,6 +1096,8 @@ namespace NightWatch
             }
         }
 
+
+
         //display left door on button press
         private void LeftDoorButton_Click(object sender, EventArgs e)
         {
@@ -1043,6 +1133,7 @@ namespace NightWatch
             }
 
         }
+
         //display right door on button press
         private void RightDoorButton_Click(object sender, EventArgs e)
         {
@@ -1077,6 +1168,7 @@ namespace NightWatch
                 rightDoorButton.Enabled = false;
             }
         }
+
         //display back door on button press
         private void BackDoorButton_Click(object sender, EventArgs e)
         {
@@ -1111,6 +1203,8 @@ namespace NightWatch
                 backDoorButton.Enabled = false;
             }
         }
+
+
         private void CleanButton_MouseDown(object sender, MouseEventArgs e)
         {
             cleaningSound.Play();
@@ -1123,6 +1217,7 @@ namespace NightWatch
             cleanWatch.Stop();
             cleanTimer.Enabled = false;
         }
+
         // Loading bar (clean)
         private void CleanTimer_Tick(object sender, EventArgs e)
         {
@@ -1214,6 +1309,7 @@ namespace NightWatch
             printerWatch.Stop();
             printerTimer.Enabled = false;
         }
+
         //Loading bar (printer)
         private void PrinterTimer_Tick(object sender, EventArgs e)
         {
@@ -1304,6 +1400,7 @@ namespace NightWatch
             fixPowerBoxWatch.Stop();
             powerBoxTimer.Enabled = false;
         }
+
         //Loading bar (power box)
         private void PowerBoxTimer_Tick(object sender, EventArgs e)
         {
@@ -1404,6 +1501,8 @@ namespace NightWatch
                 Refresh();
             }
         }
+
+
         //Blood effect (game over)
         private void GameOverBlood_Tick(object sender, EventArgs e)
         {
