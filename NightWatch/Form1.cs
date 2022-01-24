@@ -49,16 +49,6 @@ namespace NightWatch
         int error1 = 8;
         int error2 = 9;
 
-
-        int freddyCubeX = -50;
-        int freddyCubeY = -50;
-        int bonnieCubeX = -50;
-        int bonnieCubeY = -50;
-        int chicaCubeX = -50;
-        int chicaCubeY = -50;
-        int foxyCubeX = -50;
-        int foxyCubeY = -50;
-
         int doorLeftX = -50;
         int doorLeftY = -50;
         int doorLeftControls = 0;
@@ -93,96 +83,17 @@ namespace NightWatch
         int doorBackRedX = -50;
         int doorBackRedY = -50;
 
-        int cleanLoadingSquareX1 = -50;
-        int cleanLoadingSquareY1 = -50;
-        int cleanLoadingSquareX2 = -50;
-        int cleanLoadingSquareY2 = -50;
-        int cleanLoadingSquareX3 = -50;
-        int cleanLoadingSquareY3 = -50;
-        int cleanLoadingSquareX4 = -50;
-        int cleanLoadingSquareY4 = -50;
-        int cleanLoadingSquareX5 = -50;
-        int cleanLoadingSquareY5 = -50;
-        int cleanLoadingSquareX6 = -50;
-        int cleanLoadingSquareY6 = -50;
-        int cleanLoadingSquareX7 = -50;
-        int cleanLoadingSquareY7 = -50;
-        int cleanLoadingSquareX8 = -50;
-        int cleanLoadingSquareY8 = -50;
-        int cleanLoadingSquareX9 = -50;
-        int cleanLoadingSquareY9 = -50;
-        int cleanLoadingSquareX10 = -50;
-        int cleanLoadingSquareY10 = -50;
-        int cleanLoadingSquareX11 = -50;
-        int cleanLoadingSquareY11 = -50;
-        int cleanLoadingSquareX12 = -50;
-        int cleanLoadingSquareY12 = -50;
-        int cleanLoadingSquareX13 = -50;
-        int cleanLoadingSquareY13 = -50;
-        int cleanLoadingSquareX14 = -50;
-        int cleanLoadingSquareY14 = -50;
-
-        int printerLoadingSquareX1 = -50;
-        int printerLoadingSquareY1 = -50;
-        int printerLoadingSquareX2 = -50;
-        int printerLoadingSquareY2 = -50;
-        int printerLoadingSquareX3 = -50;
-        int printerLoadingSquareY3 = -50;
-        int printerLoadingSquareX4 = -50;
-        int printerLoadingSquareY4 = -50;
-        int printerLoadingSquareX5 = -50;
-        int printerLoadingSquareY5 = -50;
-        int printerLoadingSquareX6 = -50;
-        int printerLoadingSquareY6 = -50;
-        int printerLoadingSquareX7 = -50;
-        int printerLoadingSquareY7 = -50;
-        int printerLoadingSquareX8 = -50;
-        int printerLoadingSquareY8 = -50;
-        int printerLoadingSquareX9 = -50;
-        int printerLoadingSquareY9 = -50;
-        int printerLoadingSquareX10 = -50;
-        int printerLoadingSquareY10 = -50;
-        int printerLoadingSquareX11 = -50;
-        int printerLoadingSquareY11 = -50;
-        int printerLoadingSquareX12 = -50;
-        int printerLoadingSquareY12 = -50;
-        int printerLoadingSquareX13 = -50;
-        int printerLoadingSquareY13 = -50;
-        int printerLoadingSquareX14 = -50;
-        int printerLoadingSquareY14 = -50;
-
-
-        int fixPowerBoxLoadingSquareX1 = -50;
-        int fixPowerBoxLoadingSquareY1 = -50;
-        int fixPowerBoxLoadingSquareX2 = -50;
-        int fixPowerBoxLoadingSquareY2 = -50;
-        int fixPowerBoxLoadingSquareX3 = -50;
-        int fixPowerBoxLoadingSquareY3 = -50;
-        int fixPowerBoxLoadingSquareX4 = -50;
-        int fixPowerBoxLoadingSquareY4 = -50;
-        int fixPowerBoxLoadingSquareX5 = -50;
-        int fixPowerBoxLoadingSquareY5 = -50;
-        int fixPowerBoxLoadingSquareX6 = -50;
-        int fixPowerBoxLoadingSquareY6 = -50;
-        int fixPowerBoxLoadingSquareX7 = -50;
-        int fixPowerBoxLoadingSquareY7 = -50;
-        int fixPowerBoxLoadingSquareX8 = -50;
-        int fixPowerBoxLoadingSquareY8 = -50;
-        int fixPowerBoxLoadingSquareX9 = -50;
-        int fixPowerBoxLoadingSquareY9 = -50;
-        int fixPowerBoxLoadingSquareX10 = -50;
-        int fixPowerBoxLoadingSquareY10 = -50;
-        int fixPowerBoxLoadingSquareX11 = -50;
-        int fixPowerBoxLoadingSquareY11 = -50;
-        int fixPowerBoxLoadingSquareX12 = -50;
-        int fixPowerBoxLoadingSquareY12 = -50;
-        int fixPowerBoxLoadingSquareX13 = -50;
-        int fixPowerBoxLoadingSquareY13 = -50;
-        int fixPowerBoxLoadingSquareX14 = -50;
-        int fixPowerBoxLoadingSquareY14 = -50;
-
         int death = 0;
         int time = 27000;
+
+        int cleanBarCounter = 0;
+        int cleanBarLength = 0;
+
+        int printerBarCounter = 0;
+        int printerBarLength = 0;
+
+        int powerBoxBarCounter = 0;
+        int powerBoxBarLength = 0;
 
         Random randGen = new Random();
 
@@ -220,23 +131,23 @@ namespace NightWatch
         RobotAI chica;
         RobotAI foxy;
 
-        int robotAIx, robotAIy, robotAIPosition, robotAISize, robotAIType;
+        // int robotAIx, robotAIy, robotAIPosition, robotAISize;
 
 
         public nightWatchTitle()
         {
             InitializeComponent();
 
-            freddy = new RobotAI(robotAIx, robotAIy, robotAIPosition, robotAISize, robotAIType, new SolidBrush(Color.Brown));
+            freddy = new RobotAI(freddy.x, freddy.y, freddy.position, 10, new SolidBrush(Color.Brown));
             aiList.Add(freddy);
 
-            bonnie = new RobotAI(robotAIx, robotAIy, robotAIPosition, robotAISize, robotAIType,new SolidBrush(Color.Purple));
+            bonnie = new RobotAI(300, 460, 1, 10, new SolidBrush(Color.Purple));
             aiList.Add(bonnie);
 
-            chica = new RobotAI(robotAIx, robotAIy, robotAIPosition, robotAISize, robotAIType, new SolidBrush(Color.Yellow));
+            chica = new RobotAI(340, 460, 1, 10, new SolidBrush(Color.Yellow));
             aiList.Add(chica);
 
-            foxy = new RobotAI(robotAIx, robotAIy, robotAIPosition, robotAISize, robotAIType,new SolidBrush(Color.Red));
+            foxy = new RobotAI(360, 460, 1, 10, new SolidBrush(Color.Red));
             aiList.Add(foxy);
 
             freddyWatch.Start();
@@ -248,9 +159,9 @@ namespace NightWatch
             chicaMovementTimer = randGen.Next(15000, 30000);
             foxyMovementTimer = randGen.Next(10000, 15000);
             printerButton.Enabled = false;
-            powerBoxButton.Enabled = false;         
+            powerBoxButton.Enabled = false;
         }
-     
+
         private void NightWatchTitle_Paint(object sender, PaintEventArgs e)
         {
             foreach (RobotAI r in aiList)
@@ -258,83 +169,41 @@ namespace NightWatch
                 e.Graphics.FillRectangle(r.brush, r.x, r.y, r.size, r.size);
             }
 
-           //if (gameTimer.Enabled == true)
-           // {
-           //     e.Graphics.FillRectangle(whiteBrush, 400, 0, 15, 800);
-           //     e.Graphics.FillRectangle(blackBrush, 225, 300, 10, 100);
-           //     e.Graphics.FillRectangle(blackBrush, 155, 300, 10, 100);
-           //     e.Graphics.FillRectangle(blackBrush, 155, 400, 80, 10);
-           //     e.Graphics.FillRectangle(blackBrush, 155, 300, 80, 10);
+            if (gameTimer.Enabled == true)
+            {
+                e.Graphics.FillRectangle(whiteBrush, 400, 0, 15, 800);
+                e.Graphics.FillRectangle(blackBrush, 225, 300, 10, 100);
+                e.Graphics.FillRectangle(blackBrush, 155, 300, 10, 100);
+                e.Graphics.FillRectangle(blackBrush, 155, 400, 80, 10);
+                e.Graphics.FillRectangle(blackBrush, 155, 300, 80, 10);
 
-                //     e.Graphics.FillRectangle(brownBrush, freddyCubeX, freddyCubeY, 10, 10);
-                //     e.Graphics.FillRectangle(purpleBrush, bonnieCubeX, bonnieCubeY, 10, 10);
-                //     e.Graphics.FillRectangle(yellowBrush, chicaCubeX, chicaCubeY, 10, 10);
-                //     e.Graphics.FillRectangle(redBrush, foxyCubeX, foxyCubeY, 10, 10);
+                e.Graphics.FillRectangle(yellowBrush, doorLeftX, doorLeftY, 15, 60);
+                e.Graphics.FillRectangle(yellowBrush, doorRightX, doorRightY, 15, 60);
+                e.Graphics.FillRectangle(yellowBrush, doorBackX, doorBackY, 45, 15);
 
-                //     e.Graphics.FillRectangle(yellowBrush, doorLeftX, doorLeftY, 15, 60);
-                //     e.Graphics.FillRectangle(yellowBrush, doorRightX, doorRightY, 15, 60);
-                //     e.Graphics.FillRectangle(yellowBrush, doorBackX, doorBackY, 45, 15);
+                e.Graphics.FillRectangle(greenBrush, doorLeftGreenX, doorLeftGreenY, 20, 20);
+                e.Graphics.FillRectangle(yellowBrush, doorLeftYellowX, doorLeftYellowY, 20, 20);
+                e.Graphics.FillRectangle(redBrush, doorLeftRedX, doorLeftRedY, 20, 20);
 
-                //     e.Graphics.FillRectangle(greenBrush, doorLeftGreenX, doorLeftGreenY, 20, 20);
-                //     e.Graphics.FillRectangle(yellowBrush, doorLeftYellowX, doorLeftYellowY, 20, 20);
-                //     e.Graphics.FillRectangle(redBrush, doorLeftRedX, doorLeftRedY, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, doorRightGreenX, doorRightGreenY, 20, 20);
+                e.Graphics.FillRectangle(yellowBrush, doorRightYellowX, doorRightYellowY, 20, 20);
+                e.Graphics.FillRectangle(redBrush, doorRightRedX, doorRightRedY, 20, 20);
 
-                //     e.Graphics.FillRectangle(greenBrush, doorRightGreenX, doorRightGreenY, 20, 20);
-                //     e.Graphics.FillRectangle(yellowBrush, doorRightYellowX, doorRightYellowY, 20, 20);
-                //     e.Graphics.FillRectangle(redBrush, doorRightRedX, doorRightRedY, 20, 20);
+                e.Graphics.FillRectangle(greenBrush, doorBackGreenX, doorBackGreenY, 20, 20);
+                e.Graphics.FillRectangle(yellowBrush, doorBackYellowX, doorBackYellowY, 20, 20);
+                e.Graphics.FillRectangle(redBrush, doorBackRedX, doorBackRedY, 20, 20);
 
-                //     e.Graphics.FillRectangle(greenBrush, doorBackGreenX, doorBackGreenY, 20, 20);
-                //     e.Graphics.FillRectangle(yellowBrush, doorBackYellowX, doorBackYellowY, 20, 20);
-                //     e.Graphics.FillRectangle(redBrush, doorBackRedX, doorBackRedY, 20, 20);
+                e.Graphics.FillRectangle(whiteBrush, 440, 74, 260, 20);
+                e.Graphics.FillRectangle(whiteBrush, 440, 168, 260, 20);
+                e.Graphics.FillRectangle(whiteBrush, 440, 274, 260, 20);
 
-                //     e.Graphics.FillRectangle(whiteBrush, 440, 74, 260, 20);
-                //     e.Graphics.FillRectangle(whiteBrush, 440, 168, 260, 20);
-                //     e.Graphics.FillRectangle(whiteBrush, 440, 274, 260, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX1, cleanLoadingSquareY1, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX2, cleanLoadingSquareY2, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX3, cleanLoadingSquareY3, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX4, cleanLoadingSquareY4, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX5, cleanLoadingSquareY5, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX6, cleanLoadingSquareY6, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX7, cleanLoadingSquareY7, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX8, cleanLoadingSquareY8, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX9, cleanLoadingSquareY9, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX10, cleanLoadingSquareY10, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX11, cleanLoadingSquareY11, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX12, cleanLoadingSquareY12, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX13, cleanLoadingSquareY13, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, cleanLoadingSquareX14, cleanLoadingSquareY14, 20, 20);
+                e.Graphics.FillRectangle(Brushes.Green, 440, 74, 20 * cleanBarLength, 20);
 
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX1, printerLoadingSquareY1, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX2, printerLoadingSquareY2, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX3, printerLoadingSquareY3, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX4, printerLoadingSquareY4, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX5, printerLoadingSquareY5, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX6, printerLoadingSquareY6, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX7, printerLoadingSquareY7, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX8, printerLoadingSquareY8, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX9, printerLoadingSquareY9, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX10, printerLoadingSquareY10, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX11, printerLoadingSquareY11, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX12, printerLoadingSquareY12, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX13, printerLoadingSquareY13, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, printerLoadingSquareX14, printerLoadingSquareY14, 20, 20);
+                e.Graphics.FillRectangle(Brushes.Green, 440, 168, 20 * printerBarLength, 20);
 
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX1, fixPowerBoxLoadingSquareY1, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX2, fixPowerBoxLoadingSquareY2, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX3, fixPowerBoxLoadingSquareY3, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX4, fixPowerBoxLoadingSquareY4, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX5, fixPowerBoxLoadingSquareY5, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX6, fixPowerBoxLoadingSquareY6, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX7, fixPowerBoxLoadingSquareY7, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX8, fixPowerBoxLoadingSquareY8, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX9, fixPowerBoxLoadingSquareY9, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX10, fixPowerBoxLoadingSquareY10, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX11, fixPowerBoxLoadingSquareY11, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX12, fixPowerBoxLoadingSquareY12, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX13, fixPowerBoxLoadingSquareY13, 20, 20);
-                //     e.Graphics.FillRectangle(greenBrush, fixPowerBoxLoadingSquareX14, fixPowerBoxLoadingSquareY14, 20, 20);
-                // }
+                e.Graphics.FillRectangle(Brushes.Green, 440, 274, 20 * powerBoxBarLength, 20);
+
+            }
             if (gameOverBlood.Enabled == true)
             {
                 for (int i = 0; i < bloodLineXList.Count(); i++)
@@ -342,8 +211,8 @@ namespace NightWatch
                     e.Graphics.FillEllipse(redBrush, bloodLineXList[i], bloodLineYList[i], 10, 50);
                 }
                 gameOverLabel.Visible = true;
-            }      
-           
+            }
+
         }
 
         private void GameTimer_Tick(object sender, EventArgs e)
@@ -351,6 +220,8 @@ namespace NightWatch
             //Freddy, Bonnie, Chica, and Foxy AI.
             if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddyPosition == cameraOne)
             {
+                freddy.x = 50;
+                freddy.position = cameraTwo;
                 freddyPosition = cameraTwo;
                 freddyMovementTimer = randGen.Next(20000, 46000);
                 freddyWatch.Reset();
@@ -539,7 +410,7 @@ namespace NightWatch
             else if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxyPosition == error2 && doorBackControls == 0)
             {
                 //Game Over message (Foxy)
-                death = 1; 
+                death = 1;
                 gameOverBlood.Enabled = true;
                 gameTimer.Enabled = false;
                 printerButton.Visible = false;
@@ -730,7 +601,7 @@ namespace NightWatch
                 powerBackOnBackWatch.Reset();
                 backDoorButton.Enabled = true;
             }
-           
+
             //Countdown till game over
             time--;
             timeLabel.Text = $"Time Left: {time}";
@@ -773,17 +644,17 @@ namespace NightWatch
             {
                 if (a.position == 1)
                 {
-                  freddy.x = 320;
-                  freddy.y = 460;
+                    freddy.x = 320;
+                    freddy.y = 460;
 
-                  bonnie.x = 300;
-                  bonnie.y = 460;
+                    bonnie.x = 300;
+                    bonnie.y = 460;
 
-                  chica.x = 340;
-                  chica.y = 460;
+                    chica.x = 340;
+                    chica.y = 460;
 
-                  foxy.x = 360;
-                  foxy.y = 460;
+                    foxy.x = 360;
+                    foxy.y = 460;
                 }
                 else
                 {
@@ -891,7 +762,7 @@ namespace NightWatch
                     detectedChicaLabel.Text = "No signal";
                 }
                 if (foxy.position != 2)
-                { 
+                {
                     detectedFoxyLabel.Text = "No signal";
                 }
             }
@@ -950,7 +821,6 @@ namespace NightWatch
         {
             cameraSound.Play();
 
-
             foreach (RobotAI a in aiList)
             {
                 if (a.position == 4)
@@ -1005,76 +875,104 @@ namespace NightWatch
         private void CameraFiveButton_Click(object sender, EventArgs e)
         {
             cameraSound.Play();
-            if (bonniePosition == cameraFive)
+
+            foreach (RobotAI a in aiList)
             {
-                bonnieCubeX = 300;
-                bonnieCubeY = 460;
-                detectedBonnieLabel.Text = "Bonnie detected";
-            }
-            else
-            {
-                detectedBonnieLabel.Text = "None detected";
-                bonnieCubeX = -50;
-                bonnieCubeY = -50;
-            }
-            if (freddyPosition != cameraFive)
-            {
-                detectedFreddyLabel.Text = "None detected";
-                freddyCubeX = -50;
-                freddyCubeY = -50;
-            }
-            if (chicaPosition != cameraFive)
-            {
-                detectedChicaLabel.Text = "None detected";
-                chicaCubeX = -50;
-                chicaCubeY = -50;
-            }
-            if (foxyPosition != cameraFive)
-            {
-                detectedFoxyLabel.Text = "None detected";
-                foxyCubeX = -50;
-                foxyCubeY = -50;
+                if (a.position == 5)
+                {
+                    bonnie.x = 300;
+                    bonnie.y = 460;
+                }
+                else
+                {
+                    freddy.x = -50;
+                    freddy.y = -50;
+
+                    bonnie.x = -50;
+                    bonnie.y = -50;
+
+                    chica.x = -50;
+                    chica.y = -50;
+
+                    foxy.x = -50;
+                    foxy.y = -50;
+                }
+
+                if (bonnie.position == 5)
+                {
+                    detectedBonnieLabel.Text = "Bonnie detected";
+                }
+                else
+                {
+                    detectedBonnieLabel.Text = "No signal";
+                }
+                if (freddy.position != 5)
+                {
+                    detectedFreddyLabel.Text = "No signal";
+                }
+                if (chica.position != 5)
+                {
+                    detectedChicaLabel.Text = "No signal";
+                }
+                if (foxy.position != 5)
+                {
+                    detectedFoxyLabel.Text = "No signal";
+                }
             }
         }
 
         private void CameraSixButton_Click(object sender, EventArgs e)
         {
             cameraSound.Play();
-            if (freddyPosition == cameraSix)
+
+            foreach (RobotAI a in aiList)
             {
-                freddyCubeX = 320;
-                freddyCubeY = 460;
-                detectedFreddyLabel.Text = "Freddy detected";
-            }
-            else
-            {
-                detectedFreddyLabel.Text = "None detected";
-                freddyCubeX = -50;
-                freddyCubeY = -50;
-            }
-            if (bonniePosition != cameraSix)
-            {
-                detectedBonnieLabel.Text = "None detected";
-                bonnieCubeX = -50;
-                bonnieCubeY = -50;
-            }
-            if (chicaPosition == cameraSix)
-            {
-                chicaCubeX = 340;
-                chicaCubeY = 460;
-                detectedChicaLabel.Text = "Chica detected";
-            }
-            else
-            {
-                detectedChicaLabel.Text = "None detected";
-                chicaCubeX = -50;
-                chicaCubeY = -50;
-            }
-            if (foxyPosition != cameraSix)
-            {
-                detectedFoxyLabel.Text = "None detected";
-                foxyCubeX = -50;
-                foxyCubeY = -50;
+                if (a.position == 6)
+                {
+                    freddy.x = 320;
+                    freddy.y = 460;
+
+                    chica.x = 340;
+                    chica.y = 460;
+                }
+                else
+                {
+                    freddy.x = -50;
+                    freddy.y = -50;
+
+                    bonnie.x = -50;
+                    bonnie.y = -50;
+
+                    chica.x = -50;
+                    chica.y = -50;
+
+                    foxy.x = -50;
+                    foxy.y = -50;
+                }
+                if (freddy.position == 6)
+                {
+                    detectedFreddyLabel.Text = "Freddy detected";
+                }
+                else
+                {
+                    detectedFreddyLabel.Text = "No signal";
+                }
+                if (bonnie.position != 6)
+                {
+                    detectedBonnieLabel.Text = "No signal";
+                }
+                if (chica.position == 6)
+                {
+                    detectedChicaLabel.Text = "Chica detected";
+                }
+                else
+                {
+                    detectedChicaLabel.Text = "No signal";
+                }
+                if (foxy.position != 6)
+                {
+                    detectedFoxyLabel.Text = "No signal";
+                }
             }
         }
 
@@ -1082,8 +980,8 @@ namespace NightWatch
         {
             if (foxyPosition == error1)
             {
-                foxyCubeX = -50;
-                foxyCubeY = -50;
+                foxy.x = -50;
+                foxy.y = -50;
             }
         }
 
@@ -1091,12 +989,10 @@ namespace NightWatch
         {
             if (foxyPosition == error2)
             {
-                foxyCubeX = -50;
-                foxyCubeY = -50;
+                foxy.x = -50;
+                foxy.y = -50;
             }
         }
-
-
 
         //display left door on button press
         private void LeftDoorButton_Click(object sender, EventArgs e)
@@ -1221,77 +1117,20 @@ namespace NightWatch
         // Loading bar (clean)
         private void CleanTimer_Tick(object sender, EventArgs e)
         {
-            if (cleanWatch.ElapsedMilliseconds > 2000)
+            cleanBarCounter++;
+
+            if (cleanBarCounter % 10 == 0)
             {
-                cleanLoadingSquareX1 = 440;
-                cleanLoadingSquareY1 = 74;
+                cleanBarLength++;
             }
-            if (cleanWatch.ElapsedMilliseconds > 4000)
-            {
-                cleanLoadingSquareX2 = 460;
-                cleanLoadingSquareY2 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 6000)
-            {
-                cleanLoadingSquareX3 = 480;
-                cleanLoadingSquareY3 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 8000)
-            {
-                cleanLoadingSquareX4 = 500;
-                cleanLoadingSquareY4 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 10000)
-            {
-                cleanLoadingSquareX5 = 520;
-                cleanLoadingSquareY5 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 12000)
-            {
-                cleanLoadingSquareX6 = 540;
-                cleanLoadingSquareY6 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 14000)
-            {
-                cleanLoadingSquareX7 = 540;
-                cleanLoadingSquareY7 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 16000)
-            {
-                cleanLoadingSquareX8 = 560;
-                cleanLoadingSquareY8 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 18000)
-            {
-                cleanLoadingSquareX9 = 580;
-                cleanLoadingSquareY9 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 20000)
-            {
-                cleanLoadingSquareX10 = 600;
-                cleanLoadingSquareY10 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 22000)
-            {
-                cleanLoadingSquareX11 = 620;
-                cleanLoadingSquareY11 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 24000)
-            {
-                cleanLoadingSquareX12 = 640;
-                cleanLoadingSquareY12 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 26000)
-            {
-                cleanLoadingSquareX13 = 660;
-                cleanLoadingSquareY13 = 74;
-            }
-            if (cleanWatch.ElapsedMilliseconds > 28000)
+
+            Refresh();
+
+
+            if (cleanBarLength == 13)
             {
                 doneSound.Play();
                 cleanTimer.Enabled = false;
-                cleanLoadingSquareX14 = 680;
-                cleanLoadingSquareY14 = 74;
                 printerButton.Enabled = true;
                 cleanButton.Enabled = false;
             }
@@ -1313,78 +1152,21 @@ namespace NightWatch
         //Loading bar (printer)
         private void PrinterTimer_Tick(object sender, EventArgs e)
         {
-            if (printerWatch.ElapsedMilliseconds > 3000)
+            printerBarCounter++;
+
+            if (printerBarCounter % 10 == 0)
             {
-                printerLoadingSquareX1 = 440;
-                printerLoadingSquareY1 = 168;
+                printerBarLength++;
             }
-            if (printerWatch.ElapsedMilliseconds > 6000)
-            {
-                printerLoadingSquareX2 = 460;
-                printerLoadingSquareY2 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 9000)
-            {
-                printerLoadingSquareX3 = 480;
-                printerLoadingSquareY3 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 12000)
-            {
-                printerLoadingSquareX4 = 500;
-                printerLoadingSquareY4 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 15000)
-            {
-                printerLoadingSquareX5 = 520;
-                printerLoadingSquareY5 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 18000)
-            {
-                printerLoadingSquareX6 = 540;
-                printerLoadingSquareY6 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 21000)
-            {
-                printerLoadingSquareX7 = 540;
-                printerLoadingSquareY7 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 24000)
-            {
-                printerLoadingSquareX8 = 560;
-                printerLoadingSquareY8 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 27000)
-            {
-                printerLoadingSquareX9 = 580;
-                printerLoadingSquareY9 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 30000)
-            {
-                printerLoadingSquareX10 = 600;
-                printerLoadingSquareY10 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 33000)
-            {
-                printerLoadingSquareX11 = 620;
-                printerLoadingSquareY11 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 36000)
-            {
-                printerLoadingSquareX12 = 640;
-                printerLoadingSquareY12 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 39000)
-            {
-                printerLoadingSquareX13 = 660;
-                printerLoadingSquareY13 = 168;
-            }
-            if (printerWatch.ElapsedMilliseconds > 42000)
+
+            Refresh();
+
+            if (printerBarLength == 13)
             {
                 doneSound.Play();
-                printerLoadingSquareX14 = 680;
-                printerLoadingSquareY14 = 168;
-                printerButton.Enabled = false;
+                printerTimer.Enabled = false;
                 powerBoxButton.Enabled = true;
+                printerButton.Enabled = false;
             }
         }
 
@@ -1404,78 +1186,20 @@ namespace NightWatch
         //Loading bar (power box)
         private void PowerBoxTimer_Tick(object sender, EventArgs e)
         {
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 3500)
+            powerBoxBarCounter++;
+
+            if (powerBoxBarCounter % 10 == 0)
             {
-                fixPowerBoxLoadingSquareX1 = 440;
-                fixPowerBoxLoadingSquareY1 = 274;
+                powerBoxBarLength++;
             }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 6500)
-            {
-                fixPowerBoxLoadingSquareX2 = 460;
-                fixPowerBoxLoadingSquareY2 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 9500)
-            {
-                fixPowerBoxLoadingSquareX3 = 480;
-                fixPowerBoxLoadingSquareY3 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 12500)
-            {
-                fixPowerBoxLoadingSquareX4 = 500;
-                fixPowerBoxLoadingSquareY4 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 15500)
-            {
-                fixPowerBoxLoadingSquareX5 = 520;
-                fixPowerBoxLoadingSquareY5 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 18500)
-            {
-                fixPowerBoxLoadingSquareX6 = 540;
-                fixPowerBoxLoadingSquareY6 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 21500)
-            {
-                fixPowerBoxLoadingSquareX7 = 540;
-                fixPowerBoxLoadingSquareY7 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 24500)
-            {
-                fixPowerBoxLoadingSquareX8 = 560;
-                fixPowerBoxLoadingSquareY8 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 27500)
-            {
-                fixPowerBoxLoadingSquareX9 = 580;
-                fixPowerBoxLoadingSquareY9 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 30500)
-            {
-                fixPowerBoxLoadingSquareX10 = 600;
-                fixPowerBoxLoadingSquareY10 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 33500)
-            {
-                fixPowerBoxLoadingSquareX11 = 620;
-                fixPowerBoxLoadingSquareY11 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 36500)
-            {
-                fixPowerBoxLoadingSquareX12 = 640;
-                fixPowerBoxLoadingSquareY12 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 39500)
-            {
-                fixPowerBoxLoadingSquareX13 = 660;
-                fixPowerBoxLoadingSquareY13 = 274;
-            }
-            if (fixPowerBoxWatch.ElapsedMilliseconds > 42500)
+
+            Refresh();
+                  
+            if (powerBoxBarLength == 13)
             {
                 //Win screen
                 cheerSound.Play();
                 gameTimer.Enabled = false;
-                fixPowerBoxLoadingSquareX14 = 680;
-                fixPowerBoxLoadingSquareY14 = 274;
                 powerBoxButton.Enabled = false;
                 winLabel.Visible = true;
                 printerButton.Visible = false;
@@ -1501,7 +1225,6 @@ namespace NightWatch
                 Refresh();
             }
         }
-
 
         //Blood effect (game over)
         private void GameOverBlood_Tick(object sender, EventArgs e)

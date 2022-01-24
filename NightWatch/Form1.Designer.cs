@@ -68,9 +68,10 @@
             // 
             // cameraOneButton
             // 
-            this.cameraOneButton.Location = new System.Drawing.Point(151, 45);
+            this.cameraOneButton.Location = new System.Drawing.Point(201, 55);
+            this.cameraOneButton.Margin = new System.Windows.Forms.Padding(4);
             this.cameraOneButton.Name = "cameraOneButton";
-            this.cameraOneButton.Size = new System.Drawing.Size(85, 31);
+            this.cameraOneButton.Size = new System.Drawing.Size(113, 38);
             this.cameraOneButton.TabIndex = 0;
             this.cameraOneButton.Text = "CAM 1";
             this.cameraOneButton.UseVisualStyleBackColor = true;
@@ -78,9 +79,10 @@
             // 
             // cameraFourButton
             // 
-            this.cameraFourButton.Location = new System.Drawing.Point(248, 231);
+            this.cameraFourButton.Location = new System.Drawing.Point(331, 284);
+            this.cameraFourButton.Margin = new System.Windows.Forms.Padding(4);
             this.cameraFourButton.Name = "cameraFourButton";
-            this.cameraFourButton.Size = new System.Drawing.Size(85, 31);
+            this.cameraFourButton.Size = new System.Drawing.Size(113, 38);
             this.cameraFourButton.TabIndex = 1;
             this.cameraFourButton.Text = "CAM 4";
             this.cameraFourButton.UseVisualStyleBackColor = true;
@@ -88,9 +90,10 @@
             // 
             // cameraThreeButton
             // 
-            this.cameraThreeButton.Location = new System.Drawing.Point(54, 231);
+            this.cameraThreeButton.Location = new System.Drawing.Point(72, 284);
+            this.cameraThreeButton.Margin = new System.Windows.Forms.Padding(4);
             this.cameraThreeButton.Name = "cameraThreeButton";
-            this.cameraThreeButton.Size = new System.Drawing.Size(85, 31);
+            this.cameraThreeButton.Size = new System.Drawing.Size(113, 38);
             this.cameraThreeButton.TabIndex = 2;
             this.cameraThreeButton.Text = "CAM 3";
             this.cameraThreeButton.UseVisualStyleBackColor = true;
@@ -98,9 +101,10 @@
             // 
             // cameraTwoButton
             // 
-            this.cameraTwoButton.Location = new System.Drawing.Point(151, 144);
+            this.cameraTwoButton.Location = new System.Drawing.Point(201, 177);
+            this.cameraTwoButton.Margin = new System.Windows.Forms.Padding(4);
             this.cameraTwoButton.Name = "cameraTwoButton";
-            this.cameraTwoButton.Size = new System.Drawing.Size(85, 31);
+            this.cameraTwoButton.Size = new System.Drawing.Size(113, 38);
             this.cameraTwoButton.TabIndex = 3;
             this.cameraTwoButton.Text = "CAM 2";
             this.cameraTwoButton.UseVisualStyleBackColor = true;
@@ -108,9 +112,10 @@
             // 
             // cameraSixButton
             // 
-            this.cameraSixButton.Location = new System.Drawing.Point(248, 335);
+            this.cameraSixButton.Location = new System.Drawing.Point(331, 412);
+            this.cameraSixButton.Margin = new System.Windows.Forms.Padding(4);
             this.cameraSixButton.Name = "cameraSixButton";
-            this.cameraSixButton.Size = new System.Drawing.Size(85, 31);
+            this.cameraSixButton.Size = new System.Drawing.Size(113, 38);
             this.cameraSixButton.TabIndex = 4;
             this.cameraSixButton.Text = "CAM 6";
             this.cameraSixButton.UseVisualStyleBackColor = true;
@@ -118,9 +123,10 @@
             // 
             // cameraFiveButton
             // 
-            this.cameraFiveButton.Location = new System.Drawing.Point(54, 335);
+            this.cameraFiveButton.Location = new System.Drawing.Point(72, 412);
+            this.cameraFiveButton.Margin = new System.Windows.Forms.Padding(4);
             this.cameraFiveButton.Name = "cameraFiveButton";
-            this.cameraFiveButton.Size = new System.Drawing.Size(85, 31);
+            this.cameraFiveButton.Size = new System.Drawing.Size(113, 38);
             this.cameraFiveButton.TabIndex = 5;
             this.cameraFiveButton.Text = "CAM 5";
             this.cameraFiveButton.UseVisualStyleBackColor = true;
@@ -130,18 +136,20 @@
             // 
             this.youLabel.AutoSize = true;
             this.youLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.youLabel.Location = new System.Drawing.Point(171, 335);
+            this.youLabel.Location = new System.Drawing.Point(228, 412);
+            this.youLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.youLabel.Name = "youLabel";
-            this.youLabel.Size = new System.Drawing.Size(53, 24);
+            this.youLabel.Size = new System.Drawing.Size(68, 29);
             this.youLabel.TabIndex = 6;
             this.youLabel.Text = "YOU";
             // 
             // errorTwoButton
             // 
             this.errorTwoButton.Enabled = false;
-            this.errorTwoButton.Location = new System.Drawing.Point(151, 442);
+            this.errorTwoButton.Location = new System.Drawing.Point(201, 544);
+            this.errorTwoButton.Margin = new System.Windows.Forms.Padding(4);
             this.errorTwoButton.Name = "errorTwoButton";
-            this.errorTwoButton.Size = new System.Drawing.Size(85, 31);
+            this.errorTwoButton.Size = new System.Drawing.Size(113, 38);
             this.errorTwoButton.TabIndex = 7;
             this.errorTwoButton.Text = "ERROR";
             this.errorTwoButton.UseVisualStyleBackColor = true;
@@ -150,9 +158,10 @@
             // errorOneButton
             // 
             this.errorOneButton.Enabled = false;
-            this.errorOneButton.Location = new System.Drawing.Point(151, 509);
+            this.errorOneButton.Location = new System.Drawing.Point(201, 626);
+            this.errorOneButton.Margin = new System.Windows.Forms.Padding(4);
             this.errorOneButton.Name = "errorOneButton";
-            this.errorOneButton.Size = new System.Drawing.Size(85, 31);
+            this.errorOneButton.Size = new System.Drawing.Size(113, 38);
             this.errorOneButton.TabIndex = 8;
             this.errorOneButton.Text = "ERROR";
             this.errorOneButton.UseVisualStyleBackColor = true;
@@ -160,9 +169,10 @@
             // 
             // cleanButton
             // 
-            this.cleanButton.Location = new System.Drawing.Point(443, 25);
+            this.cleanButton.Location = new System.Drawing.Point(591, 31);
+            this.cleanButton.Margin = new System.Windows.Forms.Padding(4);
             this.cleanButton.Name = "cleanButton";
-            this.cleanButton.Size = new System.Drawing.Size(85, 31);
+            this.cleanButton.Size = new System.Drawing.Size(113, 38);
             this.cleanButton.TabIndex = 9;
             this.cleanButton.Text = "CLEAN";
             this.cleanButton.UseVisualStyleBackColor = true;
@@ -171,9 +181,10 @@
             // 
             // printerButton
             // 
-            this.printerButton.Location = new System.Drawing.Point(443, 112);
+            this.printerButton.Location = new System.Drawing.Point(591, 138);
+            this.printerButton.Margin = new System.Windows.Forms.Padding(4);
             this.printerButton.Name = "printerButton";
-            this.printerButton.Size = new System.Drawing.Size(85, 31);
+            this.printerButton.Size = new System.Drawing.Size(113, 38);
             this.printerButton.TabIndex = 11;
             this.printerButton.Text = "PRINTER";
             this.printerButton.UseVisualStyleBackColor = true;
@@ -182,9 +193,10 @@
             // 
             // powerBoxButton
             // 
-            this.powerBoxButton.Location = new System.Drawing.Point(443, 221);
+            this.powerBoxButton.Location = new System.Drawing.Point(591, 272);
+            this.powerBoxButton.Margin = new System.Windows.Forms.Padding(4);
             this.powerBoxButton.Name = "powerBoxButton";
-            this.powerBoxButton.Size = new System.Drawing.Size(108, 31);
+            this.powerBoxButton.Size = new System.Drawing.Size(144, 38);
             this.powerBoxButton.TabIndex = 14;
             this.powerBoxButton.Text = "FIX POWER BOX";
             this.powerBoxButton.UseVisualStyleBackColor = true;
@@ -193,9 +205,10 @@
             // 
             // leftDoorButton
             // 
-            this.leftDoorButton.Location = new System.Drawing.Point(466, 373);
+            this.leftDoorButton.Location = new System.Drawing.Point(621, 459);
+            this.leftDoorButton.Margin = new System.Windows.Forms.Padding(4);
             this.leftDoorButton.Name = "leftDoorButton";
-            this.leftDoorButton.Size = new System.Drawing.Size(108, 39);
+            this.leftDoorButton.Size = new System.Drawing.Size(144, 48);
             this.leftDoorButton.TabIndex = 15;
             this.leftDoorButton.Text = "Left Door Control System";
             this.leftDoorButton.UseVisualStyleBackColor = true;
@@ -203,9 +216,10 @@
             // 
             // rightDoorButton
             // 
-            this.rightDoorButton.Location = new System.Drawing.Point(655, 373);
+            this.rightDoorButton.Location = new System.Drawing.Point(873, 459);
+            this.rightDoorButton.Margin = new System.Windows.Forms.Padding(4);
             this.rightDoorButton.Name = "rightDoorButton";
-            this.rightDoorButton.Size = new System.Drawing.Size(108, 39);
+            this.rightDoorButton.Size = new System.Drawing.Size(144, 48);
             this.rightDoorButton.TabIndex = 16;
             this.rightDoorButton.Text = "Right Door Control System";
             this.rightDoorButton.UseVisualStyleBackColor = true;
@@ -213,9 +227,10 @@
             // 
             // backDoorButton
             // 
-            this.backDoorButton.Location = new System.Drawing.Point(561, 464);
+            this.backDoorButton.Location = new System.Drawing.Point(748, 571);
+            this.backDoorButton.Margin = new System.Windows.Forms.Padding(4);
             this.backDoorButton.Name = "backDoorButton";
-            this.backDoorButton.Size = new System.Drawing.Size(108, 39);
+            this.backDoorButton.Size = new System.Drawing.Size(144, 48);
             this.backDoorButton.TabIndex = 17;
             this.backDoorButton.Text = "Back Door Control System";
             this.backDoorButton.UseVisualStyleBackColor = true;
@@ -224,45 +239,50 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(682, 9);
+            this.label2.Location = new System.Drawing.Point(909, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.Size = new System.Drawing.Size(133, 28);
             this.label2.TabIndex = 18;
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // detectedFreddyLabel
             // 
             this.detectedFreddyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedFreddyLabel.Location = new System.Drawing.Point(269, 477);
+            this.detectedFreddyLabel.Location = new System.Drawing.Point(359, 587);
+            this.detectedFreddyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.detectedFreddyLabel.Name = "detectedFreddyLabel";
-            this.detectedFreddyLabel.Size = new System.Drawing.Size(121, 21);
+            this.detectedFreddyLabel.Size = new System.Drawing.Size(161, 26);
             this.detectedFreddyLabel.TabIndex = 19;
             this.detectedFreddyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // detectedBonnieLabel
             // 
             this.detectedBonnieLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedBonnieLabel.Location = new System.Drawing.Point(269, 498);
+            this.detectedBonnieLabel.Location = new System.Drawing.Point(359, 613);
+            this.detectedBonnieLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.detectedBonnieLabel.Name = "detectedBonnieLabel";
-            this.detectedBonnieLabel.Size = new System.Drawing.Size(121, 18);
+            this.detectedBonnieLabel.Size = new System.Drawing.Size(161, 22);
             this.detectedBonnieLabel.TabIndex = 20;
             this.detectedBonnieLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // detectedChicaLabel
             // 
             this.detectedChicaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedChicaLabel.Location = new System.Drawing.Point(269, 516);
+            this.detectedChicaLabel.Location = new System.Drawing.Point(359, 635);
+            this.detectedChicaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.detectedChicaLabel.Name = "detectedChicaLabel";
-            this.detectedChicaLabel.Size = new System.Drawing.Size(121, 18);
+            this.detectedChicaLabel.Size = new System.Drawing.Size(161, 22);
             this.detectedChicaLabel.TabIndex = 21;
             this.detectedChicaLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // detectedFoxyLabel
             // 
             this.detectedFoxyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedFoxyLabel.Location = new System.Drawing.Point(269, 534);
+            this.detectedFoxyLabel.Location = new System.Drawing.Point(359, 657);
+            this.detectedFoxyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.detectedFoxyLabel.Name = "detectedFoxyLabel";
-            this.detectedFoxyLabel.Size = new System.Drawing.Size(121, 18);
+            this.detectedFoxyLabel.Size = new System.Drawing.Size(161, 22);
             this.detectedFoxyLabel.TabIndex = 22;
             this.detectedFoxyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -284,9 +304,10 @@
             // timeLabel
             // 
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeLabel.Location = new System.Drawing.Point(616, 9);
+            this.timeLabel.Location = new System.Drawing.Point(821, 11);
+            this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(211, 23);
+            this.timeLabel.Size = new System.Drawing.Size(281, 28);
             this.timeLabel.TabIndex = 23;
             // 
             // gameOverBlood
@@ -298,9 +319,10 @@
             // 
             this.gameOverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameOverLabel.ForeColor = System.Drawing.Color.Red;
-            this.gameOverLabel.Location = new System.Drawing.Point(243, -1);
+            this.gameOverLabel.Location = new System.Drawing.Point(324, -1);
+            this.gameOverLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.gameOverLabel.Name = "gameOverLabel";
-            this.gameOverLabel.Size = new System.Drawing.Size(282, 33);
+            this.gameOverLabel.Size = new System.Drawing.Size(376, 41);
             this.gameOverLabel.TabIndex = 24;
             this.gameOverLabel.Text = "GAME OVER";
             this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -310,9 +332,10 @@
             // 
             this.winLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.winLabel.ForeColor = System.Drawing.Color.LimeGreen;
-            this.winLabel.Location = new System.Drawing.Point(258, 216);
+            this.winLabel.Location = new System.Drawing.Point(344, 266);
+            this.winLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.winLabel.Name = "winLabel";
-            this.winLabel.Size = new System.Drawing.Size(282, 33);
+            this.winLabel.Size = new System.Drawing.Size(376, 41);
             this.winLabel.TabIndex = 25;
             this.winLabel.Text = "YOU SURVIVED ";
             this.winLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -320,10 +343,10 @@
             // 
             // nightWatchTitle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1045, 690);
             this.Controls.Add(this.winLabel);
             this.Controls.Add(this.gameOverLabel);
             this.Controls.Add(this.timeLabel);
@@ -349,6 +372,7 @@
             this.Controls.Add(this.cameraOneButton);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "nightWatchTitle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Night Watch";
