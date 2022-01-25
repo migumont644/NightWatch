@@ -115,6 +115,7 @@
     <None Include="Resources\glass_ping-Go445-1207030150.wav" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Havoc.wav" />
     <Content Include="squareDetection.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

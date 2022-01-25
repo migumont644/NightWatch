@@ -58,6 +58,7 @@
             this.gameOverBlood = new System.Windows.Forms.Timer(this.components);
             this.gameOverLabel = new System.Windows.Forms.Label();
             this.winLabel = new System.Windows.Forms.Label();
+            this.outputLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -153,7 +154,6 @@
             this.errorTwoButton.TabIndex = 7;
             this.errorTwoButton.Text = "ERROR";
             this.errorTwoButton.UseVisualStyleBackColor = true;
-            this.errorTwoButton.Click += new System.EventHandler(this.ErrorTwoButton_Click);
             // 
             // errorOneButton
             // 
@@ -165,7 +165,6 @@
             this.errorOneButton.TabIndex = 8;
             this.errorOneButton.Text = "ERROR";
             this.errorOneButton.UseVisualStyleBackColor = true;
-            this.errorOneButton.Click += new System.EventHandler(this.ErrorOneButton_Click);
             // 
             // cleanButton
             // 
@@ -341,12 +340,20 @@
             this.winLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.winLabel.Visible = false;
             // 
+            // outputLabel
+            // 
+            this.outputLabel.Location = new System.Drawing.Point(359, 587);
+            this.outputLabel.Name = "outputLabel";
+            this.outputLabel.Size = new System.Drawing.Size(161, 92);
+            this.outputLabel.TabIndex = 26;
+            // 
             // nightWatchTitle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1045, 690);
+            this.Controls.Add(this.outputLabel);
             this.Controls.Add(this.winLabel);
             this.Controls.Add(this.gameOverLabel);
             this.Controls.Add(this.timeLabel);
@@ -371,6 +378,7 @@
             this.Controls.Add(this.cameraFourButton);
             this.Controls.Add(this.cameraOneButton);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "nightWatchTitle";
@@ -412,6 +420,7 @@
         private System.Windows.Forms.Timer gameOverBlood;
         private System.Windows.Forms.Label gameOverLabel;
         private System.Windows.Forms.Label winLabel;
+        private System.Windows.Forms.Label outputLabel;
     }
 }
 

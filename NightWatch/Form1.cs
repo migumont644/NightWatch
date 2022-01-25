@@ -28,16 +28,13 @@ namespace NightWatch
 
         public static List<RobotAI> aiList = new List<RobotAI>();
 
-        int freddyPosition = 1;
+        
         int freddyMovementTimer = 0;
 
-        int bonniePosition = 1;
         int bonnieMovementTimer = 0;
 
-        int chicaPosition = 1;
         int chicaMovementTimer = 0;
 
-        int foxyPosition = 1;
         int foxyMovementTimer = 0;
 
         int cameraOne = 1;
@@ -85,6 +82,7 @@ namespace NightWatch
 
         int death = 0;
         int time = 27000;
+        int clock = 12;
 
         int cleanBarCounter = 0;
         int cleanBarLength = 0;
@@ -125,6 +123,7 @@ namespace NightWatch
         SoundPlayer cheerSound = new SoundPlayer(Properties.Resources.kidsCheering);
         SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.gameOver);
         SoundPlayer doneSound = new SoundPlayer(Properties.Resources.glassPing);
+        SoundPlayer jumpScareSound = new SoundPlayer(Properties.Resources.Havoc);
 
         RobotAI freddy;
         RobotAI bonnie;
@@ -138,16 +137,16 @@ namespace NightWatch
         {
             InitializeComponent();
 
-            freddy = new RobotAI(freddy.x, freddy.y, freddy.position, 10, new SolidBrush(Color.Brown));
+            freddy = new RobotAI(1, 10, new SolidBrush(Color.Brown), "freddy");
             aiList.Add(freddy);
 
-            bonnie = new RobotAI(300, 460, 1, 10, new SolidBrush(Color.Purple));
+            bonnie = new RobotAI(1, 10, new SolidBrush(Color.Purple), "bonnie");
             aiList.Add(bonnie);
 
-            chica = new RobotAI(340, 460, 1, 10, new SolidBrush(Color.Yellow));
+            chica = new RobotAI(1, 10, new SolidBrush(Color.Yellow), "chica");
             aiList.Add(chica);
 
-            foxy = new RobotAI(360, 460, 1, 10, new SolidBrush(Color.Red));
+            foxy = new RobotAI(1, 10, new SolidBrush(Color.Red), "foxy");
             aiList.Add(foxy);
 
             freddyWatch.Start();
@@ -164,14 +163,27 @@ namespace NightWatch
 
         private void NightWatchTitle_Paint(object sender, PaintEventArgs e)
         {
+            int x = 300;
+            int y = 460;
+
+            outputLabel.Text = "";
             foreach (RobotAI r in aiList)
-            {
-                e.Graphics.FillRectangle(r.brush, r.x, r.y, r.size, r.size);
+            {                
+                if (currentCam == r.position)
+                {
+                    e.Graphics.FillRectangle(r.brush, x, y, r.size, r.size);
+                    outputLabel.Text += $"{r.name} is detected\n";
+                    x += 20;
+                }
+                //else
+                //{
+                //    outputLabel.Text = $"No signal";
+                //}
             }
 
             if (gameTimer.Enabled == true)
             {
-                e.Graphics.FillRectangle(whiteBrush, 400, 0, 15, 800);
+                e.Graphics.FillRectangle(blackBrush, 400, 0, 15, 800);
                 e.Graphics.FillRectangle(blackBrush, 225, 300, 10, 100);
                 e.Graphics.FillRectangle(blackBrush, 155, 300, 10, 100);
                 e.Graphics.FillRectangle(blackBrush, 155, 400, 80, 10);
@@ -217,31 +229,31 @@ namespace NightWatch
 
         private void GameTimer_Tick(object sender, EventArgs e)
         {
+            
             //Freddy, Bonnie, Chica, and Foxy AI.
-            if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddyPosition == cameraOne)
+            if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddy.position == cameraOne)
             {
-                freddy.x = 50;
                 freddy.position = cameraTwo;
-                freddyPosition = cameraTwo;
+              
                 freddyMovementTimer = randGen.Next(20000, 46000);
                 freddyWatch.Reset();
                 freddyWatch.Start();
             }
-            else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddyPosition == cameraTwo)
+            else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddy.position == cameraTwo)
             {
-                freddyPosition = cameraFour;
+                freddy.position = cameraFour;
                 freddyMovementTimer = randGen.Next(20000, 46000);
                 freddyWatch.Reset();
                 freddyWatch.Start();
             }
-            else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddyPosition == cameraFour)
+            else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddy.position == cameraFour)
             {
-                freddyPosition = cameraSix;
+                freddy.position = cameraSix;
                 freddyMovementTimer = randGen.Next(8000, 11000);
                 freddyWatch.Reset();
                 freddyWatch.Start();
             }
-            else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddyPosition == cameraSix && doorRightControls == 0)
+            else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddy.position == cameraSix && doorRightControls == 0)
             {
                 //Game Over message (Freddy)
                 death = 1;
@@ -268,38 +280,38 @@ namespace NightWatch
                 detectedChicaLabel.Visible = false;
                 detectedFoxyLabel.Visible = false;
             }
-            else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddyPosition == cameraSix && doorRightControls == 1)
+            else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddy.position == cameraSix && doorRightControls == 1)
             {
                 //Reset AI (Freedy)
-                freddyPosition = cameraOne;
+                freddy.position = cameraOne;
                 freddyMovementTimer = randGen.Next(20000, 46000);
                 freddyWatch.Reset();
                 freddyWatch.Start();
             }
 
 
-            if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonniePosition == cameraOne)
+            if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonnie.position == cameraOne)
             {
-                bonniePosition = cameraTwo;
+                bonnie.position = cameraTwo;
                 bonnieMovementTimer = randGen.Next(15000, 30000);
                 bonnieWatch.Reset();
                 bonnieWatch.Start();
             }
-            else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonniePosition == cameraTwo)
+            else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonnie.position == cameraTwo)
             {
-                bonniePosition = cameraThree;
+                bonnie.position = cameraThree;
                 bonnieMovementTimer = randGen.Next(15000, 30000);
                 bonnieWatch.Reset();
                 bonnieWatch.Start();
             }
-            else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonniePosition == cameraThree)
+            else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonnie.position == cameraThree)
             {
-                bonniePosition = cameraFive;
+                bonnie.position = cameraFive;
                 bonnieMovementTimer = randGen.Next(8000, 11000);
                 bonnieWatch.Reset();
                 bonnieWatch.Start();
             }
-            else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonniePosition == cameraFive && doorLeftControls == 0)
+            else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonnie.position == cameraFive && doorLeftControls == 0)
             {
                 //Game Over message (Bonnie)
                 death = 1;
@@ -326,37 +338,37 @@ namespace NightWatch
                 detectedChicaLabel.Visible = false;
                 detectedFoxyLabel.Visible = false;
             }
-            else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonniePosition == cameraFive && doorLeftControls == 1)
+            else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonnie.position == cameraFive && doorLeftControls == 1)
             {
                 //Reset AI (Bonnie)
-                bonniePosition = cameraOne;
+                bonnie.position = cameraOne;
                 bonnieMovementTimer = randGen.Next(15000, 30000);
                 bonnieWatch.Reset();
                 bonnieWatch.Start();
             }
 
-            if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chicaPosition == cameraOne)
+            if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chica.position == cameraOne)
             {
-                chicaPosition = cameraTwo;
+                chica.position = cameraTwo;
                 chicaMovementTimer = randGen.Next(15000, 30000);
                 chicaWatch.Reset();
                 chicaWatch.Start();
             }
-            else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chicaPosition == cameraTwo)
+            else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chica.position == cameraTwo)
             {
-                chicaPosition = cameraFour;
+                chica.position = cameraFour;
                 chicaMovementTimer = randGen.Next(15000, 30000);
                 chicaWatch.Reset();
                 chicaWatch.Start();
             }
-            else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chicaPosition == cameraFour)
+            else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chica.position == cameraFour)
             {
-                chicaPosition = cameraSix;
+                chica.position = cameraSix;
                 chicaMovementTimer = randGen.Next(8000, 11000);
                 chicaWatch.Reset();
                 chicaWatch.Start();
             }
-            else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chicaPosition == cameraSix && doorRightControls == 0)
+            else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chica.position == cameraSix && doorRightControls == 0)
             {
                 //Game Over message (Chica)
                 death = 1;
@@ -383,31 +395,31 @@ namespace NightWatch
                 detectedChicaLabel.Visible = false;
                 detectedFoxyLabel.Visible = false;
             }
-            else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chicaPosition == cameraSix && doorRightControls == 1)
+            else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chica.position == cameraSix && doorRightControls == 1)
             {
                 //Reset AI (Chica)
-                chicaPosition = cameraOne;
+                chica.position = cameraOne;
                 chicaMovementTimer = randGen.Next(15000, 30000);
                 chicaWatch.Reset();
                 chicaWatch.Start();
             }
 
-            if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxyPosition == cameraOne)
+            if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxy.position == cameraOne)
             {
-                foxyPosition = error1;
+                foxy.position = error1;
                 foxyMovementTimer = randGen.Next(10000, 15000);
                 foxyWatch.Reset();
                 foxyWatch.Start();
             }
-            else if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxyPosition == error1)
+            else if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxy.position == error1)
             {
-                foxyPosition = error2;
+                foxy.position = error2;
                 backSound.Play();
                 foxyMovementTimer = randGen.Next(5000, 10000);
                 foxyWatch.Reset();
                 foxyWatch.Start();
             }
-            else if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxyPosition == error2 && doorBackControls == 0)
+            else if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxy.position == error2 && doorBackControls == 0)
             {
                 //Game Over message (Foxy)
                 death = 1;
@@ -435,10 +447,10 @@ namespace NightWatch
                 detectedFoxyLabel.Visible = false;
 
             }
-            else if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxyPosition == error2 && doorBackControls == 1)
+            else if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxy.position == error2 && doorBackControls == 1)
             {
                 //Reset AI (Foxy)
-                foxyPosition = cameraOne;
+                foxy.position = cameraOne;
                 hitDoorSound.Play();
                 foxyMovementTimer = randGen.Next(10000, 15000);
                 foxyWatch.Reset();
@@ -602,9 +614,38 @@ namespace NightWatch
                 backDoorButton.Enabled = true;
             }
 
+            if (time == 27000)
+            {
+                clock = 12;
+            }
+            else if (time == 22500)
+            {
+                clock = 1;
+            }
+            else if (time == 18000)
+            {
+                clock = 2;
+            }
+            else if (time == 13500)
+            {
+                clock = 3;
+            }
+            else if (time == 9000)
+            {
+                clock = 4;
+            }
+            else if (time == 4500)
+            {
+                clock = 5;
+            }
+            else if (time == 0)
+            {
+                clock = 6;
+            }
+
             //Countdown till game over
             time--;
-            timeLabel.Text = $"Time Left: {time}";
+            timeLabel.Text = $"{clock} am";
 
             if (time == 0)
             {
@@ -634,366 +675,44 @@ namespace NightWatch
             }
             Refresh();
         }
+        int currentCam = 0;
 
         private void CameraOneButton_Click(object sender, EventArgs e)
         {
-            //Show where freddy, bonnie, chica, and foxy position if click on any camera button
-            cameraSound.Play();
-
-            foreach (RobotAI a in aiList)
-            {
-                if (a.position == 1)
-                {
-                    freddy.x = 320;
-                    freddy.y = 460;
-
-                    bonnie.x = 300;
-                    bonnie.y = 460;
-
-                    chica.x = 340;
-                    chica.y = 460;
-
-                    foxy.x = 360;
-                    foxy.y = 460;
-                }
-                else
-                {
-                    freddy.x = -50;
-                    freddy.y = -50;
-
-                    bonnie.x = -50;
-                    bonnie.y = -50;
-
-                    chica.x = -50;
-                    chica.y = -50;
-
-                    foxy.x = -50;
-                    foxy.y = -50;
-                }
-            }
-            if (freddy.position == 1)
-            {
-                detectedFreddyLabel.Text = "Freddy detected";
-            }
-            else
-            {
-                detectedFreddyLabel.Text = "No signal";
-            }
-            if (bonnie.position == 1)
-            {
-                detectedBonnieLabel.Text = "Bonnie detected";
-            }
-            else
-            {
-                detectedBonnieLabel.Text = "No signal";
-            }
-            if (chica.position == 1)
-            {
-                detectedChicaLabel.Text = "Chica detected";
-            }
-            else
-            {
-                detectedChicaLabel.Text = "No signal";
-            }
-            if (foxy.position == 1)
-            {
-                detectedFoxyLabel.Text = "Foxy detected";
-            }
-            else
-            {
-                detectedFoxyLabel.Text = "No signal";
-            }
+           currentCam = 1;
+           cameraSound.Play();                
         }
 
         private void CameraTwoButton_Click(object sender, EventArgs e)
         {
-            cameraSound.Play();
-
-            foreach (RobotAI a in aiList)
-            {
-                if (a.position == 2)
-                {
-                    freddy.x = 320;
-                    freddy.y = 460;
-
-                    bonnie.x = 300;
-                    bonnie.y = 460;
-
-                    chica.x = 340;
-                    chica.y = 460;
-                }
-                else
-                {
-                    freddy.x = -50;
-                    freddy.y = -50;
-
-                    bonnie.x = -50;
-                    bonnie.y = -50;
-
-                    chica.x = -50;
-                    chica.y = -50;
-
-                    foxy.x = -50;
-                    foxy.y = -50;
-                }
-
-                if (freddy.position == 2)
-                {
-                    detectedFreddyLabel.Text = "Freddy detected";
-                }
-                else
-                {
-                    detectedFreddyLabel.Text = "No signal";
-                }
-                if (bonnie.position == 2)
-                {
-                    detectedBonnieLabel.Text = "Bonnie detected";
-                }
-                else
-                {
-                    detectedBonnieLabel.Text = "No signal";
-                }
-                if (chica.position == 2)
-                {
-                    detectedChicaLabel.Text = "Chica detected";
-                }
-                else
-                {
-                    detectedChicaLabel.Text = "No signal";
-                }
-                if (foxy.position != 2)
-                {
-                    detectedFoxyLabel.Text = "No signal";
-                }
-            }
+         currentCam = 2;
+         cameraSound.Play();                         
         }
-
+        
         private void CameraThreeButton_Click(object sender, EventArgs e)
         {
-            cameraSound.Play();
-
-            foreach (RobotAI a in aiList)
-            {
-                if (a.position == 3)
-                {
-                    bonnie.x = 300;
-                    bonnie.y = 460;
-                }
-                else
-                {
-                    freddy.x = -50;
-                    freddy.y = -50;
-
-                    bonnie.x = -50;
-                    bonnie.y = -50;
-
-                    chica.x = -50;
-                    chica.y = -50;
-
-                    foxy.x = -50;
-                    foxy.y = -50;
-                }
-
-                if (bonnie.position == 3)
-                {
-                    detectedBonnieLabel.Text = "Bonnie detected";
-                }
-                else
-                {
-                    detectedBonnieLabel.Text = "No signal";
-                }
-                if (freddy.position != 3)
-                {
-                    detectedFreddyLabel.Text = "No signal";
-                }
-                if (chica.position != 3)
-                {
-                    detectedChicaLabel.Text = "No signal";
-                }
-                if (foxy.position != 3)
-                {
-                    detectedFoxyLabel.Text = "No signal";
-                }
-            }
+            currentCam = 3;
+            cameraSound.Play();                 
         }
-
+        
         private void CameraFourButton_Click(object sender, EventArgs e)
         {
-            cameraSound.Play();
-
-            foreach (RobotAI a in aiList)
-            {
-                if (a.position == 4)
-                {
-                    freddy.x = 320;
-                    freddy.y = 460;
-
-                    chica.x = 340;
-                    chica.y = 460;
-                }
-                else
-                {
-                    freddy.x = -50;
-                    freddy.y = -50;
-
-                    bonnie.x = -50;
-                    bonnie.y = -50;
-
-                    chica.x = -50;
-                    chica.y = -50;
-
-                    foxy.x = -50;
-                    foxy.y = -50;
-                }
-                if (freddy.position == 4)
-                {
-                    detectedFreddyLabel.Text = "Freddy detected";
-                }
-                else
-                {
-                    detectedFreddyLabel.Text = "No signal";
-                }
-                if (bonnie.position != 4)
-                {
-                    detectedBonnieLabel.Text = "No signal";
-                }
-                if (chica.position == 4)
-                {
-                    detectedChicaLabel.Text = "Chica detected";
-                }
-                else
-                {
-                    detectedChicaLabel.Text = "No signal";
-                }
-                if (foxy.position != 4)
-                {
-                    detectedFoxyLabel.Text = "No signal";
-                }
-            }
+            currentCam = 4;
+            cameraSound.Play();                         
         }
-
+        
         private void CameraFiveButton_Click(object sender, EventArgs e)
         {
-            cameraSound.Play();
-
-            foreach (RobotAI a in aiList)
-            {
-                if (a.position == 5)
-                {
-                    bonnie.x = 300;
-                    bonnie.y = 460;
-                }
-                else
-                {
-                    freddy.x = -50;
-                    freddy.y = -50;
-
-                    bonnie.x = -50;
-                    bonnie.y = -50;
-
-                    chica.x = -50;
-                    chica.y = -50;
-
-                    foxy.x = -50;
-                    foxy.y = -50;
-                }
-
-                if (bonnie.position == 5)
-                {
-                    detectedBonnieLabel.Text = "Bonnie detected";
-                }
-                else
-                {
-                    detectedBonnieLabel.Text = "No signal";
-                }
-                if (freddy.position != 5)
-                {
-                    detectedFreddyLabel.Text = "No signal";
-                }
-                if (chica.position != 5)
-                {
-                    detectedChicaLabel.Text = "No signal";
-                }
-                if (foxy.position != 5)
-                {
-                    detectedFoxyLabel.Text = "No signal";
-                }
-            }
+            currentCam = 5;
+            cameraSound.Play();                    
         }
-
+        
         private void CameraSixButton_Click(object sender, EventArgs e)
         {
-            cameraSound.Play();
-
-            foreach (RobotAI a in aiList)
-            {
-                if (a.position == 6)
-                {
-                    freddy.x = 320;
-                    freddy.y = 460;
-
-                    chica.x = 340;
-                    chica.y = 460;
-                }
-                else
-                {
-                    freddy.x = -50;
-                    freddy.y = -50;
-
-                    bonnie.x = -50;
-                    bonnie.y = -50;
-
-                    chica.x = -50;
-                    chica.y = -50;
-
-                    foxy.x = -50;
-                    foxy.y = -50;
-                }
-                if (freddy.position == 6)
-                {
-                    detectedFreddyLabel.Text = "Freddy detected";
-                }
-                else
-                {
-                    detectedFreddyLabel.Text = "No signal";
-                }
-                if (bonnie.position != 6)
-                {
-                    detectedBonnieLabel.Text = "No signal";
-                }
-                if (chica.position == 6)
-                {
-                    detectedChicaLabel.Text = "Chica detected";
-                }
-                else
-                {
-                    detectedChicaLabel.Text = "No signal";
-                }
-                if (foxy.position != 6)
-                {
-                    detectedFoxyLabel.Text = "No signal";
-                }
-            }
+            currentCam = 6;
+            cameraSound.Play();                       
         }
-
-        private void ErrorOneButton_Click(object sender, EventArgs e)
-        {
-            if (foxyPosition == error1)
-            {
-                foxy.x = -50;
-                foxy.y = -50;
-            }
-        }
-
-        private void ErrorTwoButton_Click(object sender, EventArgs e)
-        {
-            if (foxyPosition == error2)
-            {
-                foxy.x = -50;
-                foxy.y = -50;
-            }
-        }
-
+                
         //display left door on button press
         private void LeftDoorButton_Click(object sender, EventArgs e)
         {
@@ -1099,7 +818,6 @@ namespace NightWatch
                 backDoorButton.Enabled = false;
             }
         }
-
 
         private void CleanButton_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1228,8 +946,7 @@ namespace NightWatch
 
         //Blood effect (game over)
         private void GameOverBlood_Tick(object sender, EventArgs e)
-        {
-            gameOverSound.Play();
+        {          
             if (death == 1)
             {
                 bloodLineYList.Add(randGen.Next(this.Height));
@@ -1251,5 +968,7 @@ namespace NightWatch
 
             Refresh();
         }
+
+
     }
 }

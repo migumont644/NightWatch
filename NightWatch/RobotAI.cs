@@ -9,17 +9,17 @@ namespace NightWatch
 {
     public class RobotAI
     {
-        public int x, y, position, size;
+        public int position, size;
         public SolidBrush brush;
- 
+        public string name;
 
-        public RobotAI(int _x, int _y, int _position,  int _size, SolidBrush _brush )  
+        public RobotAI(int _position, int _size, SolidBrush _brush, string _name)  
         {
-            x = _x;
-            y = _y;
             position = _position;
             size = _size;
             brush = _brush;
+            name = _name;
+
         }
     }
 }
