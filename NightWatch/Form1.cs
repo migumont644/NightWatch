@@ -17,11 +17,9 @@ namespace NightWatch
     {
         SolidBrush whiteBrush = new SolidBrush(Color.White);
         SolidBrush blackBrush = new SolidBrush(Color.Black);
-        SolidBrush brownBrush = new SolidBrush(Color.SaddleBrown);
         SolidBrush yellowBrush = new SolidBrush(Color.Yellow);
         SolidBrush greenBrush = new SolidBrush(Color.LightGreen);
         SolidBrush redBrush = new SolidBrush(Color.Red);
-        SolidBrush purpleBrush = new SolidBrush(Color.MediumPurple);
 
         List<int> bloodLineXList = new List<int>();
         List<int> bloodLineYList = new List<int>();
@@ -81,7 +79,7 @@ namespace NightWatch
         int doorBackRedY = -50;
 
         int death = 0;
-        int time = 27000;
+        int time = 21000;
         int clock = 12;
 
         int cleanBarCounter = 0;
@@ -91,7 +89,7 @@ namespace NightWatch
         int printerBarLength = 0;
 
         int powerBoxBarCounter = 0;
-        int powerBoxBarLength = 0;
+        int powerBoxBarLength = 0;             
 
         Random randGen = new Random();
 
@@ -112,7 +110,7 @@ namespace NightWatch
         Stopwatch printerWatch = new Stopwatch();
         Stopwatch fixPowerBoxWatch = new Stopwatch();
 
-        SoundPlayer backSound = new SoundPlayer(Properties.Resources.loudBang);
+        SoundPlayer backSound = new SoundPlayer(Properties.Resources.foxyVent);
         SoundPlayer hitDoorSound = new SoundPlayer(Properties.Resources.gavelBanging);
         SoundPlayer doorCloseSound = new SoundPlayer(Properties.Resources.doorClose);
         SoundPlayer doorOpenSound = new SoundPlayer(Properties.Resources.electricDoorOpening);
@@ -120,10 +118,12 @@ namespace NightWatch
         SoundPlayer printerSound = new SoundPlayer(Properties.Resources.printer);
         SoundPlayer cleaningSound = new SoundPlayer(Properties.Resources.poweringVacuum);
         SoundPlayer powerBoxSound = new SoundPlayer(Properties.Resources.electricity);
-        SoundPlayer cheerSound = new SoundPlayer(Properties.Resources.kidsCheering);
-        SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.gameOver);
-        SoundPlayer doneSound = new SoundPlayer(Properties.Resources.glassPing);
+        SoundPlayer doneSound = new SoundPlayer(Properties.Resources.doneSound);
         SoundPlayer jumpScareSound = new SoundPlayer(Properties.Resources.Havoc);
+        SoundPlayer sixAmSound = new SoundPlayer(Properties.Resources._6_AM);
+        SoundPlayer leaveSound = new SoundPlayer(Properties.Resources.AMIREAL_1_or_9_0);
+        SoundPlayer freddyRightSound = new SoundPlayer(Properties.Resources.GarveyLaugh02);
+        SoundPlayer ventSound = new SoundPlayer(Properties.Resources.InVentFast__8_);
 
         RobotAI freddy;
         RobotAI bonnie;
@@ -137,16 +137,19 @@ namespace NightWatch
         {
             InitializeComponent();
 
-            freddy = new RobotAI(1, 10, new SolidBrush(Color.Brown), "freddy");
+            doneOne.Visible = false;
+            doneTwo.Visible = false;
+
+            freddy = new RobotAI(1, 10, new SolidBrush(Color.Brown), "Freddy");
             aiList.Add(freddy);
 
-            bonnie = new RobotAI(1, 10, new SolidBrush(Color.Purple), "bonnie");
+            bonnie = new RobotAI(1, 10, new SolidBrush(Color.Purple), "Bonnie");
             aiList.Add(bonnie);
 
-            chica = new RobotAI(1, 10, new SolidBrush(Color.Yellow), "chica");
+            chica = new RobotAI(1, 10, new SolidBrush(Color.Yellow), "Chica");
             aiList.Add(chica);
 
-            foxy = new RobotAI(1, 10, new SolidBrush(Color.Red), "foxy");
+            foxy = new RobotAI(1, 10, new SolidBrush(Color.Red), "Foxy");
             aiList.Add(foxy);
 
             freddyWatch.Start();
@@ -167,22 +170,24 @@ namespace NightWatch
             int y = 460;
 
             outputLabel.Text = "";
-            foreach (RobotAI r in aiList)
-            {                
-                if (currentCam == r.position)
-                {
-                    e.Graphics.FillRectangle(r.brush, x, y, r.size, r.size);
-                    outputLabel.Text += $"{r.name} is detected\n";
-                    x += 20;
-                }
-                //else
-                //{
-                //    outputLabel.Text = $"No signal";
-                //}
-            }
+            
 
             if (gameTimer.Enabled == true)
             {
+                foreach (RobotAI r in aiList)
+                {
+                    if (currentCam == r.position)
+                    {
+                        e.Graphics.FillRectangle(r.brush, x, y, r.size, r.size);
+                        outputLabel.Text += $"{r.name} is detected\n";
+                        x += 20;
+                    }
+                    //else
+                    //{
+                    //    outputLabel.Text = $"No signal";
+                    //}
+                }
+
                 e.Graphics.FillRectangle(blackBrush, 400, 0, 15, 800);
                 e.Graphics.FillRectangle(blackBrush, 225, 300, 10, 100);
                 e.Graphics.FillRectangle(blackBrush, 155, 300, 10, 100);
@@ -217,7 +222,7 @@ namespace NightWatch
 
             }
             if (gameOverBlood.Enabled == true)
-            {
+            {              
                 for (int i = 0; i < bloodLineXList.Count(); i++)
                 {
                     e.Graphics.FillEllipse(redBrush, bloodLineXList[i], bloodLineYList[i], 10, 50);
@@ -229,6 +234,7 @@ namespace NightWatch
 
         private void GameTimer_Tick(object sender, EventArgs e)
         {
+
             
             //Freddy, Bonnie, Chica, and Foxy AI.
             if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddy.position == cameraOne)
@@ -248,6 +254,7 @@ namespace NightWatch
             }
             else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddy.position == cameraFour)
             {
+                freddyRightSound.Play();
                 freddy.position = cameraSix;
                 freddyMovementTimer = randGen.Next(8000, 11000);
                 freddyWatch.Reset();
@@ -275,14 +282,14 @@ namespace NightWatch
                 errorTwoButton.Visible = false;
                 youLabel.Visible = false;
                 timeLabel.Visible = false;
-                detectedFreddyLabel.Visible = false;
-                detectedBonnieLabel.Visible = false;
-                detectedChicaLabel.Visible = false;
-                detectedFoxyLabel.Visible = false;
+                outputLabel.Visible = false;
+                doneOne.Visible = false;
+                doneTwo.Visible = false;
             }
             else if (freddyWatch.ElapsedMilliseconds > freddyMovementTimer && freddy.position == cameraSix && doorRightControls == 1)
             {
                 //Reset AI (Freedy)
+                leaveSound.Play();
                 freddy.position = cameraOne;
                 freddyMovementTimer = randGen.Next(20000, 46000);
                 freddyWatch.Reset();
@@ -333,14 +340,14 @@ namespace NightWatch
                 errorTwoButton.Visible = false;
                 youLabel.Visible = false;
                 timeLabel.Visible = false;
-                detectedFreddyLabel.Visible = false;
-                detectedBonnieLabel.Visible = false;
-                detectedChicaLabel.Visible = false;
-                detectedFoxyLabel.Visible = false;
+                outputLabel.Visible = false; 
+                doneOne.Visible = false;
+                doneTwo.Visible = false;
             }
             else if (bonnieWatch.ElapsedMilliseconds > bonnieMovementTimer && bonnie.position == cameraFive && doorLeftControls == 1)
             {
                 //Reset AI (Bonnie)
+                leaveSound.Play();
                 bonnie.position = cameraOne;
                 bonnieMovementTimer = randGen.Next(15000, 30000);
                 bonnieWatch.Reset();
@@ -390,14 +397,14 @@ namespace NightWatch
                 errorTwoButton.Visible = false;
                 youLabel.Visible = false;
                 timeLabel.Visible = false;
-                detectedFreddyLabel.Visible = false;
-                detectedBonnieLabel.Visible = false;
-                detectedChicaLabel.Visible = false;
-                detectedFoxyLabel.Visible = false;
+                outputLabel.Visible = false;
+                doneOne.Visible = false;
+                doneTwo.Visible = false;
             }
             else if (chicaWatch.ElapsedMilliseconds > chicaMovementTimer && chica.position == cameraSix && doorRightControls == 1)
             {
                 //Reset AI (Chica)
+                leaveSound.Play();
                 chica.position = cameraOne;
                 chicaMovementTimer = randGen.Next(15000, 30000);
                 chicaWatch.Reset();
@@ -406,6 +413,7 @@ namespace NightWatch
 
             if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxy.position == cameraOne)
             {
+                ventSound.Play();
                 foxy.position = error1;
                 foxyMovementTimer = randGen.Next(10000, 15000);
                 foxyWatch.Reset();
@@ -441,10 +449,9 @@ namespace NightWatch
                 errorTwoButton.Visible = false;
                 youLabel.Visible = false;
                 timeLabel.Visible = false;
-                detectedFreddyLabel.Visible = false;
-                detectedBonnieLabel.Visible = false;
-                detectedChicaLabel.Visible = false;
-                detectedFoxyLabel.Visible = false;
+                outputLabel.Visible = false;
+                doneOne.Visible = false;
+                doneTwo.Visible = false;
 
             }
             else if (foxyWatch.ElapsedMilliseconds > foxyMovementTimer && foxy.position == error2 && doorBackControls == 1)
@@ -614,27 +621,27 @@ namespace NightWatch
                 backDoorButton.Enabled = true;
             }
 
-            if (time == 27000)
+            if (time == 21000)
             {
                 clock = 12;
             }
-            else if (time == 22500)
+            else if (time == 17500)
             {
                 clock = 1;
             }
-            else if (time == 18000)
+            else if (time == 14000)
             {
                 clock = 2;
             }
-            else if (time == 13500)
+            else if (time == 10500)
             {
                 clock = 3;
             }
-            else if (time == 9000)
+            else if (time == 7000)
             {
                 clock = 4;
             }
-            else if (time == 4500)
+            else if (time == 3500)
             {
                 clock = 5;
             }
@@ -668,10 +675,9 @@ namespace NightWatch
                 errorTwoButton.Visible = false;
                 youLabel.Visible = false;
                 timeLabel.Visible = false;
-                detectedFreddyLabel.Visible = false;
-                detectedBonnieLabel.Visible = false;
-                detectedChicaLabel.Visible = false;
-                detectedFoxyLabel.Visible = false;
+                outputLabel.Visible = false;
+                doneOne.Visible = false;
+                doneTwo.Visible = false;
             }
             Refresh();
         }
@@ -837,7 +843,7 @@ namespace NightWatch
         {
             cleanBarCounter++;
 
-            if (cleanBarCounter % 10 == 0)
+            if (cleanBarCounter % 60 == 0)
             {
                 cleanBarLength++;
             }
@@ -851,6 +857,8 @@ namespace NightWatch
                 cleanTimer.Enabled = false;
                 printerButton.Enabled = true;
                 cleanButton.Enabled = false;
+                doneOne.Visible = true;
+
             }
         }
 
@@ -872,7 +880,7 @@ namespace NightWatch
         {
             printerBarCounter++;
 
-            if (printerBarCounter % 10 == 0)
+            if (printerBarCounter % 100 == 0)
             {
                 printerBarLength++;
             }
@@ -882,6 +890,7 @@ namespace NightWatch
             if (printerBarLength == 13)
             {
                 doneSound.Play();
+                doneTwo.Visible = true;
                 printerTimer.Enabled = false;
                 powerBoxButton.Enabled = true;
                 printerButton.Enabled = false;
@@ -906,7 +915,7 @@ namespace NightWatch
         {
             powerBoxBarCounter++;
 
-            if (powerBoxBarCounter % 10 == 0)
+            if (powerBoxBarCounter % 150 == 0)
             {
                 powerBoxBarLength++;
             }
@@ -916,7 +925,7 @@ namespace NightWatch
             if (powerBoxBarLength == 13)
             {
                 //Win screen
-                cheerSound.Play();
+                sixAmSound.Play();
                 gameTimer.Enabled = false;
                 powerBoxButton.Enabled = false;
                 winLabel.Visible = true;
@@ -936,17 +945,24 @@ namespace NightWatch
                 errorTwoButton.Visible = false;
                 youLabel.Visible = false;
                 timeLabel.Visible = false;
-                detectedFreddyLabel.Visible = false;
-                detectedBonnieLabel.Visible = false;
-                detectedChicaLabel.Visible = false;
-                detectedFoxyLabel.Visible = false;
+                outputLabel.Visible = false;
+                doneOne.Visible = false;
+                doneTwo.Visible = false;
                 Refresh();
             }
         }
 
         //Blood effect (game over)
+        bool soundPlayed = false;
+
         private void GameOverBlood_Tick(object sender, EventArgs e)
         {          
+            if (soundPlayed == false)
+            {
+                jumpScareSound.Play();
+                soundPlayed = true;
+            }
+
             if (death == 1)
             {
                 bloodLineYList.Add(randGen.Next(this.Height));

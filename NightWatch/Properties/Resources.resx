@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AMIREAL_1_or_9_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AMIREAL_1_or_9-0.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="cameraShutterClick" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAEAQAAABZTeXN0ZW0uSU8uTWVtb3J5U3RyZWFtCgAAAAdfYnVmZmVyB19v
@@ -3168,6 +3172,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMSVNUFAAAAElORk9JU0ZUCAAAAEZpc3Npb24ACw==
 </value>
+  </data>
+  <data name="doneSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Robot_blip-Marianne_Gagnon-120342607.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="doorClose" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -20648,9 +20655,20 @@
         AP//AAAAAP7///8L
 </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="foxyVent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dormitabis Noche 3 Molten Evil and Soulcage (mp3cut.net).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="gameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Power Down-SoundBible.com-1404884198.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GarveyLaugh01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GarveyLaugh01.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GarveyLaugh02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GarveyLaugh02.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GarveyLaugh03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GarveyLaugh03.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="gavelBanging" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -20960,6 +20978,9 @@
   </data>
   <data name="Havoc" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Havoc.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="InVentFast__8_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InVentFast_(8).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="kidsCheering" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Kids Cheering-SoundBible.com-681813822.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -47112,5 +47133,11 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL
 </value>
+  </data>
+  <data name="_1200px_Checkmark_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1200px-Checkmark.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_6_AM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\6 AM.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

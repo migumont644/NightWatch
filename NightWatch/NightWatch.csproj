@@ -116,6 +116,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Havoc.wav" />
+    <None Include="Resources\6 AM.wav" />
+    <None Include="Resources\Dormitabis Noche 3 Molten Evil and Soulcage %28mp3cut.net%29.wav" />
+    <None Include="Resources\GarveyLaugh01.wav" />
+    <None Include="Resources\GarveyLaugh02.wav" />
+    <None Include="Resources\GarveyLaugh03.wav" />
+    <None Include="Resources\Robot_blip-Marianne_Gagnon-120342607.wav" />
+    <None Include="Resources\1200px-Checkmark.svg.png" />
+    <None Include="Resources\InVentFast_%288%29.wav" />
+    <None Include="Resources\AMIREAL_1_or_9-0.wav" />
     <Content Include="squareDetection.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

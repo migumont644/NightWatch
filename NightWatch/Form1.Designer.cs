@@ -47,10 +47,6 @@
             this.rightDoorButton = new System.Windows.Forms.Button();
             this.backDoorButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.detectedFreddyLabel = new System.Windows.Forms.Label();
-            this.detectedBonnieLabel = new System.Windows.Forms.Label();
-            this.detectedChicaLabel = new System.Windows.Forms.Label();
-            this.detectedFoxyLabel = new System.Windows.Forms.Label();
             this.cleanTimer = new System.Windows.Forms.Timer(this.components);
             this.printerTimer = new System.Windows.Forms.Timer(this.components);
             this.powerBoxTimer = new System.Windows.Forms.Timer(this.components);
@@ -59,6 +55,10 @@
             this.gameOverLabel = new System.Windows.Forms.Label();
             this.winLabel = new System.Windows.Forms.Label();
             this.outputLabel = new System.Windows.Forms.Label();
+            this.doneOne = new System.Windows.Forms.PictureBox();
+            this.doneTwo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.doneOne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doneTwo)).BeginInit();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -245,46 +245,6 @@
             this.label2.TabIndex = 18;
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // detectedFreddyLabel
-            // 
-            this.detectedFreddyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedFreddyLabel.Location = new System.Drawing.Point(359, 587);
-            this.detectedFreddyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.detectedFreddyLabel.Name = "detectedFreddyLabel";
-            this.detectedFreddyLabel.Size = new System.Drawing.Size(161, 26);
-            this.detectedFreddyLabel.TabIndex = 19;
-            this.detectedFreddyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // detectedBonnieLabel
-            // 
-            this.detectedBonnieLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedBonnieLabel.Location = new System.Drawing.Point(359, 613);
-            this.detectedBonnieLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.detectedBonnieLabel.Name = "detectedBonnieLabel";
-            this.detectedBonnieLabel.Size = new System.Drawing.Size(161, 22);
-            this.detectedBonnieLabel.TabIndex = 20;
-            this.detectedBonnieLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // detectedChicaLabel
-            // 
-            this.detectedChicaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedChicaLabel.Location = new System.Drawing.Point(359, 635);
-            this.detectedChicaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.detectedChicaLabel.Name = "detectedChicaLabel";
-            this.detectedChicaLabel.Size = new System.Drawing.Size(161, 22);
-            this.detectedChicaLabel.TabIndex = 21;
-            this.detectedChicaLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // detectedFoxyLabel
-            // 
-            this.detectedFoxyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectedFoxyLabel.Location = new System.Drawing.Point(359, 657);
-            this.detectedFoxyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.detectedFoxyLabel.Name = "detectedFoxyLabel";
-            this.detectedFoxyLabel.Size = new System.Drawing.Size(161, 22);
-            this.detectedFoxyLabel.TabIndex = 22;
-            this.detectedFoxyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // cleanTimer
             // 
             this.cleanTimer.Interval = 20;
@@ -302,8 +262,8 @@
             // 
             // timeLabel
             // 
-            this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeLabel.Location = new System.Drawing.Point(821, 11);
+            this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeLabel.Location = new System.Drawing.Point(932, 9);
             this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(281, 28);
@@ -342,10 +302,36 @@
             // 
             // outputLabel
             // 
-            this.outputLabel.Location = new System.Drawing.Point(359, 587);
+            this.outputLabel.BackColor = System.Drawing.Color.White;
+            this.outputLabel.Font = new System.Drawing.Font("MS Reference Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outputLabel.Location = new System.Drawing.Point(374, 587);
             this.outputLabel.Name = "outputLabel";
-            this.outputLabel.Size = new System.Drawing.Size(161, 92);
+            this.outputLabel.Size = new System.Drawing.Size(150, 77);
             this.outputLabel.TabIndex = 26;
+            // 
+            // doneOne
+            // 
+            this.doneOne.BackColor = System.Drawing.Color.Transparent;
+            this.doneOne.Image = global::NightWatch.Properties.Resources._1200px_Checkmark_svg;
+            this.doneOne.InitialImage = global::NightWatch.Properties.Resources._1200px_Checkmark_svg;
+            this.doneOne.Location = new System.Drawing.Point(940, 65);
+            this.doneOne.Name = "doneOne";
+            this.doneOne.Size = new System.Drawing.Size(56, 58);
+            this.doneOne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.doneOne.TabIndex = 27;
+            this.doneOne.TabStop = false;
+            // 
+            // doneTwo
+            // 
+            this.doneTwo.BackColor = System.Drawing.Color.Transparent;
+            this.doneTwo.Image = global::NightWatch.Properties.Resources._1200px_Checkmark_svg;
+            this.doneTwo.InitialImage = global::NightWatch.Properties.Resources._1200px_Checkmark_svg;
+            this.doneTwo.Location = new System.Drawing.Point(940, 177);
+            this.doneTwo.Name = "doneTwo";
+            this.doneTwo.Size = new System.Drawing.Size(56, 58);
+            this.doneTwo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.doneTwo.TabIndex = 28;
+            this.doneTwo.TabStop = false;
             // 
             // nightWatchTitle
             // 
@@ -353,14 +339,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1045, 690);
+            this.Controls.Add(this.doneTwo);
+            this.Controls.Add(this.doneOne);
             this.Controls.Add(this.outputLabel);
             this.Controls.Add(this.winLabel);
             this.Controls.Add(this.gameOverLabel);
             this.Controls.Add(this.timeLabel);
-            this.Controls.Add(this.detectedFoxyLabel);
-            this.Controls.Add(this.detectedChicaLabel);
-            this.Controls.Add(this.detectedBonnieLabel);
-            this.Controls.Add(this.detectedFreddyLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.backDoorButton);
             this.Controls.Add(this.rightDoorButton);
@@ -385,6 +369,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Night Watch";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.NightWatchTitle_Paint);
+            ((System.ComponentModel.ISupportInitialize)(this.doneOne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doneTwo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,10 +395,6 @@
         private System.Windows.Forms.Button rightDoorButton;
         private System.Windows.Forms.Button backDoorButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label detectedFreddyLabel;
-        private System.Windows.Forms.Label detectedBonnieLabel;
-        private System.Windows.Forms.Label detectedChicaLabel;
-        private System.Windows.Forms.Label detectedFoxyLabel;
         private System.Windows.Forms.Timer cleanTimer;
         private System.Windows.Forms.Timer printerTimer;
         private System.Windows.Forms.Timer powerBoxTimer;
@@ -421,6 +403,8 @@
         private System.Windows.Forms.Label gameOverLabel;
         private System.Windows.Forms.Label winLabel;
         private System.Windows.Forms.Label outputLabel;
+        private System.Windows.Forms.PictureBox doneOne;
+        private System.Windows.Forms.PictureBox doneTwo;
     }
 }
 
